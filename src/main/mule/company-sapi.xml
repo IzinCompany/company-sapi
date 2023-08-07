@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd">
+	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="e6bd9149-63e7-416a-a46d-7a2a7520118c" >
+		<http:listener-connection host="0.0.0.0" port="8081" />
+	</http:listener-config>
+	<flow name="company-sapiFlow" doc:id="aac08ae8-0ea0-4672-b2c8-94e6ccb2abff" >
+		<http:listener doc:name="Listener" doc:id="1f083159-b77a-4886-ae81-b2e2533b44b0" config-ref="HTTP_Listener_config" path="/"/>
+		<set-payload value='#["Payload is set to: " ++ (attributes.queryParams."param1" default "")]' doc:name="Set Payload" doc:id="008d8624-6a7e-4e61-afbc-48e553ca614e" />
+		<logger level="INFO" doc:name="Logger" doc:id="7bda6c22-5e0e-49d7-a8a4-d3fbf241f046" message="#[payload]"/>
+	</flow>
+</mule>
