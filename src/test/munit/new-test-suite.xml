@@ -8,7 +8,7 @@
 		http://www.mulesoft.org/schema/mule/munit http://www.mulesoft.org/schema/mule/munit/current/mule-munit.xsd
 		http://www.mulesoft.org/schema/mule/munit-tools  http://www.mulesoft.org/schema/mule/munit-tools/current/mule-munit-tools.xsd">
 	<munit:config name="new-test-suite.xml" />
-	<munit:test name="new-test-suite-company-sapiFlowTest" doc:id="a90c1600-58a3-4b06-801b-c98fd4ab574e" description="Test">
+	<munit:test name="new-test-suite-company-sapiFlowTest" doc:id="a90c1600-58a3-4b06-801b-c98fd4ab574e" description="Test" expectedErrorType="HTTP">
 		<munit:execution >
 			<flow-ref doc:name="Flow-ref to company-sapiFlow" doc:id="7109bfb6-af25-4365-b6fa-06171d229582" name="company-sapiFlow"/>
 		</munit:execution>
