@@ -144,4 +144,7 @@ jobs:
 
     - name: Deploy to Exchange
       id: deployExchange
+      env:
+        AP_CICD_ConnectedApp_ClientID: ${{ secrets.AP_CICD_ConnectedApp_ClientID }}
+        AP_CICD_ConnectedApp_ClientSecret: ${{ secrets.AP_CICD_ConnectedApp_ClientSecret }}
       run: mvn -B deploy -DskipTests -Dlicense.skip=true -s .maven/settings.xml
