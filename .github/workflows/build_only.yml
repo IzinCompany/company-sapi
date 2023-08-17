@@ -8,14 +8,14 @@
 
 name: Build job only
 
-on:
-  pull_request:
-    branches: [ develop ]
+#on:
+#  pull_request:
+#    branches: [ develop ]
 
 jobs:
-  unittest:
-    runs-on: ubuntu-latest
+  runs-on: ubuntu-latest
     steps:
+    
     - name: Check out this repo
       id: checkout-repo
       uses: actions/checkout@v3
@@ -27,52 +27,18 @@ jobs:
         key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
         restore-keys: |
           ${{ runner.os }}-maven-
-
+    
     - name: Setup JDK 8
       id: setup-jdk
       uses: actions/setup-java@v3
       with:
         java-version: '8'
         distribution: 'zulu'
-        cache: maven     
-    
-    - name: Run MUnits
-      id: build
-      run: mvn clean test -B -s .maven/settings.xml
-      env:
-        MuleSoft_EE_Rep_Username: ${{ secrets.MuleSoft_EE_Rep_Username }}
-        MuleSoft_EE_Rep_Password: ${{ secrets.MuleSoft_EE_Rep_Password }}
-        AP_CICD_ConnectedApp_ClientID: ${{ secrets.AP_CICD_ConnectedApp_ClientID }}
-        AP_CICD_ConnectedApp_ClientSecret: ${{ secrets.AP_CICD_ConnectedApp_ClientSecret }}
-
-  build:
-    needs: unittest
-    runs-on: ubuntu-latest
-    steps:
-    
-    - name: Check out this repo
-      id: checkout-repo
-      uses: actions/checkout@v3
-    
-    - name: Set up cache for Maven Dependencies(./m2/repository)
-      uses: actions/cache@v3
-      with:
-        path: ~/.m2/repository
-        key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
-        restore-keys: |
-          ${{ runner.os }}-maven-
-    
-#    - name: Setup JDK 8
-#      id: setup-jdk
-#      uses: actions/setup-java@v3
-#      with:
-#        java-version: '8'
-#        distribution: 'zulu'
-#        cache: maven
+        cache: maven
     
     - name: Build the artifact
       id: build
-      run: mvn -B package -DskipMunitTests
+      run: mvn -B compile -DskipMunitTests
 
     - name: Stamp artifact file name with commit hash
       id: stamp-commit-hash

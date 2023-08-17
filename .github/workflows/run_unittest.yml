@@ -8,9 +8,9 @@
 
 name: Run unit tests
 
-on:
-  push:
-    branches: [ "develop" ]
+#on:
+#  push:
+#    branches: [ "develop" ]
 
 jobs:
   unittest:

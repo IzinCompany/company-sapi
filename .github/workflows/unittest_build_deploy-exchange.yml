@@ -6,11 +6,12 @@
 # separate terms of service, privacy policy, and support
 # documentation.
 
-name: PR from some branch to Develop - Maven build - CI
+name: Run Unit tests, package, and deploy to exchange
 
-#on:
-#  pull_request:
-#    branches: [ develop ]
+on:
+  push:
+    branches:
+      - 'develop'
 
 jobs:
   unittest:
@@ -62,14 +63,6 @@ jobs:
         restore-keys: |
           ${{ runner.os }}-maven-
     
-#    - name: Setup JDK 8
-#      id: setup-jdk
-#      uses: actions/setup-java@v3
-#      with:
-#        java-version: '8'
-#        distribution: 'zulu'
-#        cache: maven
-    
     - name: Build the artifact
       id: build
       run: mvn -B package -DskipMunitTests
@@ -82,13 +75,37 @@ jobs:
         artifactName2=$(ls target/*.jar | head -1 | sed "s/.jar/-$commitHash.jar/g")
         mv $artifactName1 $artifactName2
 
-    #- name: get-pom-version
-      #id: pom-version
-      #uses: CptMokoena/maven-get-version-action@master
-
     - name: Upload artifact
       id: upload-artifact
       uses: actions/upload-artifact@v3
       with:
-        name: artifacts
+        name: artifact
         path: target/*.jar
+
+  deployexchange:
+    needs: build
+      runs-on: ubuntu-latest
+      steps:
+      
+      - name: Check out this repo
+        id: checkout-repo
+        uses: actions/checkout@v3
+      
+      - name: Set up cache for Maven Dependencies(./m2/repository)
+        uses: actions/cache@v3
+        with:
+          path: ~/.m2/repository
+          key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
+          restore-keys: |
+            ${{ runner.os }}-maven-
+      
+      
+      - name: Download artifact
+        id: download-artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: artifact
+
+      - name: Deploy to Exchange
+        id: deployExchange
+        run: mvn -B deploy -DskipTests -Dlicense.skip=true
