@@ -13,10 +13,46 @@ on:
     branches:
       - 'develop'
 
+  workflow_dispatch:
+    inputs:
+      environmentOption:
+        description: 'Target environment to deploy'
+        required: false
+        default: 'Dev'
+        type: choice
+        options:
+        - Dev
+        - UAT
+        - Prod
+      tags:
+        description: 'Test scenario tags'
+        required: false
+        type: boolean
+      environment:
+        description: 'Environment to run tests against'
+        type: environment
+        required: false
+      version:
+        description: "Version according to value set on project.version in the pom.xml"
+        default: "1.0.0-SNAPSHOT"
+
 jobs:
   unittest:
     runs-on: ubuntu-latest
     steps:
+
+    - name: LOG DEBUG
+      run: echo Environment Option is ${{ inputs.environmentOption }}
+
+    - name: LOG DEBUG
+      run: echo tags is ${{ inputs.tags }}
+
+    - name: LOG DEBUG
+      run: echo Environment is ${{ inputs.environment }}#
+
+    - name: LOG DEBUG
+      run: echo Version is ${{ inputs.version }}#
+
     - name: Check out this repo
       id: checkout-repo
       uses: actions/checkout@v3
@@ -108,4 +144,4 @@ jobs:
 
     - name: Deploy to Exchange
       id: deployExchange
-      run: mvn -B deploy -DskipTests -Dlicense.skip=true
+      run: mvn -B deploy -DskipTests -Dlicense.skip=true -s .maven/settings.xml
