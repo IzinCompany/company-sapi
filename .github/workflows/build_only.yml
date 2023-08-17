@@ -8,11 +8,11 @@
 
 name: Build job only
 
-#on:
-#  pull_request:
-#    branches: [ develop ]
+on:
+  workflow_dispatch:
 
 jobs:
+  build:
     runs-on: ubuntu-latest
     steps:
     - name: Check out this repo

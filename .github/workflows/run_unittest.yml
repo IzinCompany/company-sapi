@@ -8,9 +8,8 @@
 
 name: Run unit tests
 
-#on:
-#  push:
-#    branches: [ "develop" ]
+on:
+  workflow_dispatch:
 
 jobs:
   unittest:
