@@ -151,4 +151,8 @@ jobs:
 
     - name: Deploy to Cloudhub
       id: deployCH
+      env:
+        AP_CICD_ConnectedApp_ClientID: ${{ secrets.AP_CICD_ConnectedApp_ClientID }}
+        AP_CICD_ConnectedApp_ClientSecret: ${{ secrets.AP_CICD_ConnectedApp_ClientSecret }}
+        AP_Organization_ID: ${{ secrets.AP_Organization_ID }}
       run: mvn -B deploy -DmuleDeploy

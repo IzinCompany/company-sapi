@@ -142,9 +142,13 @@ jobs:
       with:
         name: artifact
 
+    - name: LOG DEBUG
+      run: echo AP_CICD_ConnectedApp_ClientID is ${{ secrets.AP_CICD_ConnectedApp_ClientID }}
+
     - name: Deploy to Exchange
       id: deployExchange
       env:
         AP_CICD_ConnectedApp_ClientID: ${{ secrets.AP_CICD_ConnectedApp_ClientID }}
         AP_CICD_ConnectedApp_ClientSecret: ${{ secrets.AP_CICD_ConnectedApp_ClientSecret }}
+        AP_Organization_ID: ${{ secrets.AP_Organization_ID }}
       run: mvn -B deploy -DskipTests -Dlicense.skip=true -s .maven/settings.xml
