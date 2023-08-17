@@ -1,0 +1,154 @@
+# This workflow will build a Java project with Maven, and cache/restore any dependencies to improve the workflow execution time
+# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-java-with-maven
+
+# This workflow uses actions that are not certified by GitHub.
+# They are provided by a third-party and are governed by
+# separate terms of service, privacy policy, and support
+# documentation.
+
+name: Run Unit tests, package, and deploy to cloudhub
+
+on:
+  workflow_dispatch:
+    inputs:
+      environmentOption:
+        description: 'Target environment to deploy'
+        required: false
+        default: 'Dev'
+        type: choice
+        options:
+        - Dev
+        - UAT
+        - Prod
+      tags:
+        description: 'Test scenario tags'
+        required: false
+        type: boolean
+      environment:
+        description: 'Environment to run tests against'
+        type: environment
+        required: false
+      version:
+        description: "Version according to value set on project.version in the pom.xml"
+        default: "1.0.0-SNAPSHOT"
+
+jobs:
+  unittest:
+    runs-on: ubuntu-latest
+    steps:
+
+    - name: LOG DEBUG
+      run: echo Environment Option is ${{ inputs.environmentOption }}
+
+    - name: LOG DEBUG
+      run: echo tags is ${{ inputs.tags }}
+
+    - name: LOG DEBUG
+      run: echo Environment is ${{ inputs.environment }}#
+
+    - name: LOG DEBUG
+      run: echo Version is ${{ inputs.version }}#
+
+    - name: Check out this repo
+      id: checkout-repo
+      uses: actions/checkout@v3
+    
+    - name: Set up cache for Maven Dependencies(./m2/repository)
+      uses: actions/cache@v3
+      with:
+        path: ~/.m2/repository
+        key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
+        restore-keys: |
+          ${{ runner.os }}-maven-
+
+    - name: Setup JDK 8
+      id: setup-jdk
+      uses: actions/setup-java@v3
+      with:
+        java-version: '8'
+        distribution: 'zulu'
+        cache: maven     
+    
+    - name: Run MUnits
+      id: build
+      run: mvn clean test -B -s .maven/settings.xml
+      env:
+        MuleSoft_EE_Rep_Username: ${{ secrets.MuleSoft_EE_Rep_Username }}
+        MuleSoft_EE_Rep_Password: ${{ secrets.MuleSoft_EE_Rep_Password }}
+        AP_CICD_ConnectedApp_ClientID: ${{ secrets.AP_CICD_ConnectedApp_ClientID }}
+        AP_CICD_ConnectedApp_ClientSecret: ${{ secrets.AP_CICD_ConnectedApp_ClientSecret }}
+
+  build:
+    needs: unittest
+    runs-on: ubuntu-latest
+    steps:
+    
+    - name: Check out this repo
+      id: checkout-repo
+      uses: actions/checkout@v3
+    
+    - name: Set up cache for Maven Dependencies(./m2/repository)
+      uses: actions/cache@v3
+      with:
+        path: ~/.m2/repository
+        key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
+        restore-keys: |
+          ${{ runner.os }}-maven-
+    
+    - name: Build the artifact
+      id: build
+      run: mvn -B package -DskipMunitTests -s .maven/settings.xml -D
+      env:
+        MuleSoft_EE_Rep_Username: ${{ secrets.MuleSoft_EE_Rep_Username }}
+        MuleSoft_EE_Rep_Password: ${{ secrets.MuleSoft_EE_Rep_Password }}
+        AP_Organization_ID: ${{ secrets.AP_Organization_ID }}
+        AP_Environment: ${{ secrets.AP_Environment }}
+        AP_CICD_ConnectedApp_ClientID: ${{ secrets.AP_CICD_ConnectedApp_ClientID }}
+        AP_CICD_ConnectedApp_ClientSecret: ${{ secrets.AP_CICD_ConnectedApp_ClientSecret }}
+        AP_ENV_ClientID: ${{ secrets.AP_ENV_ClientID }}
+        AP_ENV_ClientSecret: ${{ secrets.AP_ENV_ClientSecret }}
+        AP_CH_Runtime_Version: ${{ secrets.AP_CH_Runtime_Version }}
+
+    - name: Stamp artifact file name with commit hash
+      id: stamp-commit-hash
+      run: |
+        artifactName1=$(ls target/*.jar | head -1)
+        commitHash=$(git rev-parse --short "$GITHUB_SHA")
+        artifactName2=$(ls target/*.jar | head -1 | sed "s/.jar/-$commitHash.jar/g")
+        mv $artifactName1 $artifactName2
+
+    - name: Upload artifact
+      id: upload-artifact
+      uses: actions/upload-artifact@v3
+      with:
+        name: artifacts
+        path: target/*.jar
+
+  deploycloudhub:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+    
+    - name: Check out this repo
+      id: checkout-repo
+      uses: actions/checkout@v3
+    
+    - name: Set up cache for Maven Dependencies(./m2/repository)
+      uses: actions/cache@v3
+      with:
+        path: ~/.m2/repository
+        key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
+        restore-keys: |
+          ${{ runner.os }}-maven-
+    
+    
+    - name: Download artifact
+      id: download-artifact
+      uses: actions/download-artifact@v3
+      with:
+        name: artifacts
+        path: target/*.jar
+
+    - name: Deploy to Cloudhub
+      id: deployCH
+      run: mvn -B deploy -DmuleDeploy
