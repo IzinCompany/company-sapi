@@ -102,7 +102,7 @@ jobs:
         MuleSoft_EE_Rep_Username: ${{ secrets.MuleSoft_EE_Rep_Username }}
         MuleSoft_EE_Rep_Password: ${{ secrets.MuleSoft_EE_Rep_Password }}
         AP_Organization_ID: ${{ secrets.AP_Organization_ID }}
-        AP_Environment: ${{ secrets.AP_Environment }}
+        AP_Environment: ${{ input.environmentOption }}
         AP_CICD_ConnectedApp_ClientID: ${{ secrets.AP_CICD_ConnectedApp_ClientID }}
         AP_CICD_ConnectedApp_ClientSecret: ${{ secrets.AP_CICD_ConnectedApp_ClientSecret }}
         AP_ENV_ClientID: ${{ secrets.AP_ENV_ClientID }}
