@@ -49,15 +49,15 @@ jobs:
         artifactName2=$(ls target/*.jar | head -1 | sed "s/.jar/-$commitHash.jar/g")
         mv $artifactName1 $artifactName2
 
-    - name: get-pom-version
-      id: pom-version
-      uses: CptMokoena/maven-get-version-action@master
+    #- name: get-pom-version
+      #id: pom-version
+      #uses: CptMokoena/maven-get-version-action@master
 
     - name: Upload artifact
       id: upload-artifact
       uses: actions/upload-artifact@v3
       with:
-        name: ${{ steps.pom-version.outputs.version }}
+        name: artifacts
         path: target/*.jar
 
     # Optional: Uploads the full dependency graph to GitHub to improve the quality of Dependabot alerts this repository can receive
