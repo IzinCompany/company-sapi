@@ -43,10 +43,11 @@ jobs:
 
     - name: Stamp artifact file name with commit hash
       id: stamp-commit-hash
-      run: artifactName1=$(ls target/*.jar | head -1)
-      commitHash=$(git rev-parse --short "$GITHUB_SHA")
-      artifactName2=$(ls target/*.jar | head -1 | sed "s/.jar/-$commitHash.jar/g")
-      mv $artifactName1 $artifactName2
+      run: |
+        artifactName1=$(ls target/*.jar | head -1)
+        commitHash=$(git rev-parse --short "$GITHUB_SHA")
+        artifactName2=$(ls target/*.jar | head -1 | sed "s/.jar/-$commitHash.jar/g")
+        mv $artifactName1 $artifactName2
 
     - name: get-pom-version
       id: pom-version
