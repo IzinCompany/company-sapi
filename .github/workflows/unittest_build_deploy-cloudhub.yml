@@ -97,7 +97,7 @@ jobs:
         MuleSoft_EE_Rep_Username: ${{ secrets.MuleSoft_EE_Rep_Username }}
         MuleSoft_EE_Rep_Password: ${{ secrets.MuleSoft_EE_Rep_Password }}
         AP_Organization_ID: ${{ secrets.AP_Organization_ID }}
-        AP_Environment: ${{ input.environmentOption }}
+        AP_Environment: ${{ inputs.environment }}
         AP_CICD_ConnectedApp_ClientID: ${{ secrets.AP_CICD_ConnectedApp_ClientID }}
         AP_CICD_ConnectedApp_ClientSecret: ${{ secrets.AP_CICD_ConnectedApp_ClientSecret }}
         AP_ENV_ClientID: ${{ inputs.environment == 'Dev' && secrets.AP_DEV_ClientID || inputs.environment == 'UAT' && secrets.AP_UAT_ClientID || inputs.environment == 'Prod' && secrets.AP_Prod_ClientID}}
