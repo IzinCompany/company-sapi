@@ -26,6 +26,9 @@ jobs:
         distribution: 'zulu'
         cache: maven
     - name: Run MUnit tests
+      env:
+        nexus_username: ${{ secrets.nexus_username }}
+        nexus_password: ${{ secrets.nexus_password }}
       run: mvn clean test --settings .maven/settings.xml
 
     # Optional: Uploads the full dependency graph to GitHub to improve the quality of Dependabot alerts this repository can receive
