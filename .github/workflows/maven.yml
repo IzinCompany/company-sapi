@@ -15,7 +15,7 @@ on:
 jobs:
   unittest:
     runs-on: ubuntu-latest
-    
+    steps:
     - name: Check out this repo
       id: checkout-repo
       uses: actions/checkout@v3
