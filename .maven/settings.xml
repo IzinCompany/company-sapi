@@ -10,13 +10,13 @@
   <servers>
     <server>
       <id>MuleRepository</id>
-      <username>${MuleSoft_EE_Rep_Username}</username>
-      <password>${MuleSoft_EE_Rep_Password}</password>
+      <username>${env.MuleSoft_EE_Rep_Username}</username>
+      <password>${env.MuleSoft_EE_Rep_Password}</password>
     </server>
     <server>
       <id>anypoint-exchange-v3</id>
       <username>~~~Client~~~</username>
-      <password>${AP_CICD_ConnectedApp_ClientID}~?~${AP_CICD_ConnectedApp_ClientSecret}</password>
+      <password>${env.AP_CICD_ConnectedApp_ClientID}~?~${env.AP_CICD_ConnectedApp_ClientSecret}</password>
     </server>
   </servers>
   <mirrors>
