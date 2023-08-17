@@ -6,30 +6,58 @@
 # separate terms of service, privacy policy, and support
 # documentation.
 
-name: Java CI with Maven
+name: PR from some branch to Develop - Maven build - CI
 
 on:
-  push:
-    branches: [ "develop" ]
+  pull_request:
+    branches: [ develop ]
 
 jobs:
-  Run_Munits:
-
+  build:
     runs-on: ubuntu-latest
-
     steps:
-    - uses: actions/checkout@v3
-    - name: Set up JDK 8
+    
+    - name: Check out this repo
+      id: checkout-repo
+      uses: actions/checkout@v3
+    
+    - name: Set up cache for Maven Dependencies(./m2/repository)
+      uses: actions/cache@v3
+      with:
+        path: ~/.m2/repository
+        key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
+        restore-keys: |
+          ${{ runner.os }}-maven-
+    
+    - name: Setup JDK 8
+      id: setup-jdk
       uses: actions/setup-java@v3
       with:
         java-version: '8'
         distribution: 'zulu'
         cache: maven
-    - name: Run MUnit tests
-      env:
-        nexus_username: ${{ secrets.nexus_username }}
-        nexus_password: ${{ secrets.nexus_password }}
-      run: mvn clean test --settings .maven/settings.xml
+    
+    - name: Build the artifact
+      id: build
+      run: mvn -B package -DskipMunitTests
+
+    - name: Stamp artifact file name with commit hash
+      id: stamp-commit-hash
+      run: artifactName1=$(ls target/*.jar | head -1)
+      commitHash=$(git rev-parse --short "$GITHUB_SHA")
+      artifactName2=$(ls target/*.jar | head -1 | sed "s/.jar/-$commitHash.jar/g")
+      mv $artifactName1 $artifactName2
+
+    - name: get-pom-version
+      id: pom-version
+      uses: CptMokoena/maven-get-version-action@master
+
+    - name: Upload artifact
+      id: upload-artifact
+      uses: actions/upload-artifact@v3
+      with:
+        name: ${{ steps.pom-version.outputs.version }}
+        path: target/*.jar
 
     # Optional: Uploads the full dependency graph to GitHub to improve the quality of Dependabot alerts this repository can receive
     - name: Update dependency graph

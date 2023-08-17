@@ -4,7 +4,7 @@
 
 	<groupId>ae21b73e-b561-4937-9ff3-25698a5edd0b</groupId>
 	<artifactId>company-sapi</artifactId>
-	<version>1.0.2-SNAPSHOT</version>
+	<version>1.0.0-SNAPSHOT</version>
 	<packaging>mule-application</packaging>
 
 	<name>company-sapi</name>
@@ -12,16 +12,16 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-		<environment>Sandbox</environment>
-		<businessGroupId>ae21b73e-b561-4937-9ff3-25698a5edd0b</businessGroupId>
 		<app.runtime>4.4.0-20230522</app.runtime>
-		<mule.cloudhub.runtime>4.4.0</mule.cloudhub.runtime>
 		<mule.maven.plugin.version>3.8.2</mule.maven.plugin.version>
-		<connectedApp.client_id>bc6a151a19dd4fe7a4e1043cb18667e8</connectedApp.client_id>
-		<connectedApp.client_secret>6a55F5a8aB7a4Ce7AB771C0f38632Ce1</connectedApp.client_secret>
-		<ap.env.client_id>b76a026220204571bc47a88c2a8bc0fe</ap.env.client_id>
-		<ap.env.client_secret>98CD27a8406342BcA21fd1BC1c083226</ap.env.client_secret>
 		<munit.version>2.3.14</munit.version>
+		<AP_Organization_ID>ae21b73e-b561-4937-9ff3-25698a5edd0b</AP_Organization_ID>
+		<AP_Environment>Dev</AP_Environment>
+		<AP_CICD_ConnectedApp_ClientID>bc6a151a19dd4fe7a4e1043cb18667e8</AP_CICD_ConnectedApp_ClientID>
+		<AP_CICD_ConnectedApp_ClientSecret>6a55F5a8aB7a4Ce7AB771C0f38632Ce1</AP_CICD_ConnectedApp_ClientSecret>
+		<AP_ENV_ClientID>b76a026220204571bc47a88c2a8bc0fe</AP_ENV_ClientID>
+		<AP_ENV_ClientSecret>98CD27a8406342BcA21fd1BC1c083226</AP_ENV_ClientSecret>
+		<AP_CH_Runtime_Version>4.4.0</AP_CH_Runtime_Version>
 	</properties>
 	<scm>
 		<developerConnection>scm:git:https://github.com/IzinCompany/company-sapi.git</developerConnection>
@@ -43,16 +43,16 @@
 					<cloudhub2Deployment>
 						<uri>https://anypoint.mulesoft.com</uri>
 						<provider>MC</provider>
-						<environment>${environment}</environment>
+						<environment>${AP_Environment}</environment>
 						<target>Cloudhub-US-East-2</target>
-						<muleVersion>${mule.cloudhub.runtime}</muleVersion>
-						<connectedAppClientId>${connectedApp.client_id}</connectedAppClientId>
-						<connectedAppClientSecret>${connectedApp.client_secret}</connectedAppClientSecret>
+						<muleVersion>${AP_CH_Runtime_Version}</muleVersion>
+						<connectedAppClientId>${AP_CICD_ConnectedApp_ClientID}</connectedAppClientId>
+						<connectedAppClientSecret>${AP_CICD_ConnectedApp_ClientSecret}</connectedAppClientSecret>
 						<connectedAppGrantType>client_credentials</connectedAppGrantType>
 						<applicationName>${app.name}</applicationName>
 						<replicas>1</replicas>
 						<vCores>0.1</vCores>
-						<businessGroupId>${businessGroupId}</businessGroupId>
+						<businessGroupId>${AP_Organization_ID}</businessGroupId>
 						<integrations>
 							<services>
 								<objectStoreV2>
@@ -71,8 +71,8 @@
 						</deploymentSettings>
 						<properties>
 							<anypoint.platform.base_uri>https://anypoint.mulesoft.com/</anypoint.platform.base_uri>
-							<anypoint.platform.client_id>${ap.env.client_id}</anypoint.platform.client_id>
-							<anypoint.platform.client_secret>${ap.env.client_secret}</anypoint.platform.client_secret>
+							<anypoint.platform.client_id>${AP_ENV_ClientID}</anypoint.platform.client_id>
+							<anypoint.platform.client_secret>${AP_ENV_ClientSecret}</anypoint.platform.client_secret>
 							<mule.env>${environment}</mule.env>
 							<build.version>${build.version}</build.version>
 							<anypoint.platform.analytics_base_uri>
@@ -175,7 +175,7 @@
 		<repository>
 			<id>anypoint-exchange-v3</id>
 			<name>Corporate Repository</name>
-			<url>https://maven.anypoint.mulesoft.com/api/v3/organizations/${businessGroupId}/maven</url>
+			<url>https://maven.anypoint.mulesoft.com/api/v3/organizations/${AP_Organization_ID}/maven</url>
 			<layout>default</layout>
 		</repository>
 	</distributionManagement>
