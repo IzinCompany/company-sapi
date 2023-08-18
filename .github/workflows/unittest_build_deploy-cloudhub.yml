@@ -92,7 +92,6 @@ jobs:
     
     - name: Build the artifact
       id: build
-      run: mvn -B package -DskipMunitTests -s .maven/settings.xml -D
       env:
         MuleSoft_EE_Rep_Username: ${{ secrets.MuleSoft_EE_Rep_Username }}
         MuleSoft_EE_Rep_Password: ${{ secrets.MuleSoft_EE_Rep_Password }}
@@ -104,6 +103,8 @@ jobs:
         AP_ENV_ClientSecret: ${{ inputs.environment == 'Dev' && secrets.AP_DEV_ClientSecret || inputs.environment == 'UAT' && secrets.AP_UAT_ClientSecret || inputs.environment == 'Prod' && secrets.AP_Prod_ClientSecret}}
         AP_CH_Runtime_Version: ${{ inputs.runtimeVersion }}
         environment: ${{ inputs.environment }}
+      run: mvn -B package -DskipMunitTests -s .maven/settings.xml
+      
     - name: Stamp artifact file name with commit hash
       id: stamp-commit-hash
       run: |
