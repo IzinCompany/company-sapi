@@ -16,7 +16,6 @@
 		<mule.maven.plugin.version>3.8.2</mule.maven.plugin.version>
 		<munit.version>2.3.14</munit.version>
 		<env.AP_Organization_ID>ae21b73e-b561-4937-9ff3-25698a5edd0b</env.AP_Organization_ID>
-		<env.AP_Environment>Dev</env.AP_Environment>
 		<env.AP_CICD_ConnectedApp_ClientID>bc6a151a19dd4fe7a4e1043cb18667e8</env.AP_CICD_ConnectedApp_ClientID>
 		<env.AP_CICD_ConnectedApp_ClientSecret>6a55F5a8aB7a4Ce7AB771C0f38632Ce1</env.AP_CICD_ConnectedApp_ClientSecret>
 		<env.AP_ENV_ClientID>b76a026220204571bc47a88c2a8bc0fe</env.AP_ENV_ClientID>
