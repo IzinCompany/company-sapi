@@ -47,6 +47,11 @@ jobs:
         git config --global user.name "ConnectedApp CI/CD"
         mvn release:prepare -s .maven/settings.xml
 
+    - name: Checkout latest release tag
+        run: |
+          LATEST_TAG=$(git describe --tags `git rev-list --tags --max-count=1`)
+          git checkout $LATEST_TAG
+          
     - name: Deploy to Cloudhub on Prod
       id: deploy-ch-dev
       env:
