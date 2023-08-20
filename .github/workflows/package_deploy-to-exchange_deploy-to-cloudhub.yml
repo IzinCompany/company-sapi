@@ -24,7 +24,8 @@ on:
         - 4.4.0
 jobs:
   
-  package:
+  package_deployEchange_deployCHDev:
+    name: Package, and deploy to exchange, then deploy to Cloud Hub - Dev
     runs-on: ubuntu-latest
     steps:
     
@@ -40,8 +41,8 @@ jobs:
         restore-keys: |
           ${{ runner.os }}-maven-
     
-    - name: Deploy to Exchange
-      id: deploy-exchange
+    - name: Package and deploy to Exchange
+      id: package-deploy-exchange
       env:
         MuleSoft_EE_Rep_Username: ${{ secrets.MuleSoft_EE_Rep_Username }}
         MuleSoft_EE_Rep_Password: ${{ secrets.MuleSoft_EE_Rep_Password }}
@@ -56,7 +57,7 @@ jobs:
         AP_Privatespace_Sandbox_Name: ${{ vars.AP_PrivateSpace_Sandbox_Name }}
         AP_replicas: 1
         AP_vcores: 0.1
-      run: mvn deploy -DskipMunitTests -s .maven/settings.xml
+      run: mvn clean deploy -DskipMunitTests -s .maven/settings.xml
 
     - name: Deploy to Cloudhub on Dev
       id: deploy-ch-dev
