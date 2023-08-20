@@ -160,5 +160,5 @@ jobs:
         AP_CICD_ConnectedApp_ClientSecret: ${{ secrets.AP_CICD_ConnectedApp_ClientSecret }}
         AP_Organization_ID: ${{ secrets.AP_Organization_ID }}
         AP_Environment: ${{ inputs.environment }}
-        AP_Full_Application_Name: ${{  format('{0}{1}', vars.AP_Application_Name, inputs.environment == 'Dev' && vars.AP_DEV_APPLICATION_NAME_SUFFIX || inputs.environment == 'UAT' && vars.AP_UAT_APPLICATION_NAME_SUFFIX || inputs.environment == 'Prod' && vars.AP_PROD_APPLICATION_NAME_SUFFIX}}) }}
+        AP_Full_Application_Name: ${{  format('{0}{1}', vars.AP_Application_Name, inputs.environment == 'Dev' && vars.AP_DEV_APPLICATION_NAME_SUFFIX || inputs.environment == 'UAT' && vars.AP_UAT_APPLICATION_NAME_SUFFIX || inputs.environment == 'Prod' && vars.AP_PROD_APPLICATION_NAME_SUFFIX) }}
       run: mvn -B deploy -DmuleDeploy -DskipMunitTests -Denv.AP_Environment=$AP_Environment -Dapp.name=$AP_Full_Application_Name
