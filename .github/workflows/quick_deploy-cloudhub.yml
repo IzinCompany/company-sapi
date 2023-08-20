@@ -71,7 +71,7 @@ jobs:
         AP_vcores: 0.1
         MuleSoft_EE_Rep_Username: ${{ secrets.MuleSoft_EE_Rep_Username }}
         MuleSoft_EE_Rep_Password: ${{ secrets.MuleSoft_EE_Rep_Password }}
-      run: mvn -B deploy -DmuleDeploy -DskipMunitTests -s .maven/settings.xml
+      run: mvn clean deploy -B -s .maven/settings.xml -DmuleDeploy
             -Denv.AP_Environment=$AP_Environment 
             -Dapp.name=$AP_Full_Application_Name 
             -DAP_Organization_ID=$AP_Organization_ID 
