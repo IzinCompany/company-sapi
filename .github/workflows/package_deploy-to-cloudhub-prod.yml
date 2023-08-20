@@ -52,6 +52,16 @@ jobs:
         LATEST_TAG=$(git describe --tags `git rev-list --tags --max-count=1`)
         git checkout $LATEST_TAG
 
+    - name: Package and deploy to Exchange
+      id: package-deploy-exchange
+      env:
+        MuleSoft_EE_Rep_Username: ${{ secrets.MuleSoft_EE_Rep_Username }}
+        MuleSoft_EE_Rep_Password: ${{ secrets.MuleSoft_EE_Rep_Password }}
+        AP_CICD_ConnectedApp_ClientID: ${{ secrets.AP_CICD_ConnectedApp_ClientID }}
+        AP_CICD_ConnectedApp_ClientSecret: ${{ secrets.AP_CICD_ConnectedApp_ClientSecret }}
+        AP_Organization_ID: ${{ secrets.AP_Organization_ID }}
+      run: mvn deploy -DskipMunitTests -s .maven/settings.xml
+
     - name: Deploy to Cloudhub on Prod
       id: deploy-ch-dev
       env:
