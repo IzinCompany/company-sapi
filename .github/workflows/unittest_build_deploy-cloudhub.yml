@@ -51,8 +51,8 @@ jobs:
 
     - name: LOG DEBUG Input? - ?
       env:
-        Input: ${{ $INPUT_AP_APPLICATION_NAME_SUFFIX }}
-      run: echo $AP_Full_Application_Name
+        Input: ${{ vars.INPUT_AP_APPLICATION_NAME_SUFFIX }}
+      run: echo $Input
 
     - name: LOG DEBUG PRIVATESPACE_SANDBOX_NAME - Org Variable
       env:
