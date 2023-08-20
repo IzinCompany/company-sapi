@@ -87,7 +87,7 @@ jobs:
         AP_Organization_ID: ${{ secrets.AP_Organization_ID }}
       run: |
         artifactName=$(ls target/*.jar | head -1 | sed "s/.jar/-$commitHash.jar/g")
-        mvn -B deploy -DskipMunitTests -s .maven/settings.xml -Dmule.artifact=company-sapi-1.0.0-SNAPSHOT-mule-application-9864e4a.jar
+        mvn -B deploy -DskipMunitTests -s .maven/settings.xml -Dmule.artifact=company-sapi-1.0.0-SNAPSHOT-mule-application-$commitHash.jar
 
     - name: Deploy to Cloudhub on Dev
       id: deploy-ch-dev
@@ -97,4 +97,4 @@ jobs:
         AP_Organization_ID: ${{ secrets.AP_Organization_ID }}
       run: |
         artifactName=$(ls target/*.jar | head -1 | sed "s/.jar/-$commitHash.jar/g")
-        mvn -B deploy -DmuleDeploy -DskipMunitTests -s .maven/settings.xml -Dmule.artifact=company-sapi-1.0.0-SNAPSHOT-mule-application-9864e4a.jar
+        mvn -B deploy -DmuleDeploy -DskipMunitTests -s .maven/settings.xml -Dmule.artifact=company-sapi-1.0.0-SNAPSHOT-mule-application-$commitHash.jar
