@@ -46,7 +46,7 @@ jobs:
       run: |
         echo $AP_Application_Name
         echo $AP_APPLICATION_NAME_SUFFIX
-        echo AP_Full_Application_Name
+        echo $AP_Full_Application_Name
 
     - name: LOG DEBUG PRIVATESPACE_SANDBOX_NAME - Org Variable
       env:
