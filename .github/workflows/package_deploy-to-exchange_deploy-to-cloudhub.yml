@@ -90,7 +90,7 @@ jobs:
       run: |
         artifactPath=$(ls target/*.jar | head -1)
         echo $artifactPath
-        mvn deploy -DskipMunitTests -s .maven/settings.xml -Dmule.artifact=$artifactName
+        mvn deploy -DskipMunitTests -s .maven/settings.xml -Dmule.artifact=$artifactPath
 
     - name: Deploy to Cloudhub on Dev
       id: deploy-ch-dev
@@ -101,4 +101,4 @@ jobs:
       run: |
         artifactPath=$(ls target/*.jar | head -1)
         echo $artifactPath
-        mvn deploy -DmuleDeploy -DskipMunitTests -s .maven/settings.xml -Dmule.artifact=$artifactName
+        mvn deploy -DmuleDeploy -DskipMunitTests -s .maven/settings.xml -Dmule.artifact=$artifactPath
