@@ -40,16 +40,10 @@ jobs:
         key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
         restore-keys: |
           ${{ runner.os }}-maven-
-    
-    - name: Package and deploy to Exchange
-      id: package-deploy-exchange
-      env:
-        MuleSoft_EE_Rep_Username: ${{ secrets.MuleSoft_EE_Rep_Username }}
-        MuleSoft_EE_Rep_Password: ${{ secrets.MuleSoft_EE_Rep_Password }}
-        AP_CICD_ConnectedApp_ClientID: ${{ secrets.AP_CICD_ConnectedApp_ClientID }}
-        AP_CICD_ConnectedApp_ClientSecret: ${{ secrets.AP_CICD_ConnectedApp_ClientSecret }}
-        AP_CH_Runtime_Version: ${{ inputs.runtimeVersion == '' && '4.4.0' || inputs.runtimeVersion }}
-      run: mvn clean deploy -DskipMunitTests -s .maven/settings.xml
+
+    - name: Run Maven Release:Prepare
+      id: run-maven-release-prepare
+      run: mvn release:prepare
 
     - name: Deploy to Cloudhub on Prod
       id: deploy-ch-dev
