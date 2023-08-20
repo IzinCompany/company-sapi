@@ -150,4 +150,4 @@ jobs:
         AP_CICD_ConnectedApp_ClientSecret: ${{ secrets.AP_CICD_ConnectedApp_ClientSecret }}
         AP_Organization_ID: ${{ secrets.AP_Organization_ID }}
         AP_Environment: ${{ inputs.environment }}
-      run: mvn -B deploy -DmuleDeploy -DskipMunitTests -Denv.AP_Environment=$AP_Environment -Dapp.name=${{ format('{0}{1}',$AP_Application_Name, $AP_APPLICATION_NAME_SUFFIX) }}
+      run: mvn -B deploy -DmuleDeploy -DskipMunitTests -Denv.AP_Environment=$AP_Environment -Dapp.name=${{ format('{0}{1}','$AP_Application_Name', '$AP_APPLICATION_NAME_SUFFIX') }}
