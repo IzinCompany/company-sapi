@@ -4,4 +4,5 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd">
 	<global-property doc:name="Global Property" doc:id="972eabb3-1396-4d75-8a80-d116981ca1a8" name="mule.env" value="local" />
+	<configuration-properties doc:name="Configuration properties" doc:id="dabaa311-8f2b-4d53-9a08-0ce55b2dfd69" file="configs\\${mule.env}.yaml" />
 </mule>
