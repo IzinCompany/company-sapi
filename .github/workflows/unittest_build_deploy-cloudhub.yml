@@ -41,18 +41,12 @@ jobs:
     - name: LOG DEBUG full application name - Repo Variable and Env Variable
       env:
         AP_Application_Name: ${{ vars.AP_Application_Name }}
-        AP_APPLICATION_NAME_SUFFIX: ${{ vars.AP_APPLICATION_NAME_SUFFIX }}
-      run: echo $AP_Application_Name $AP_APPLICATION_NAME_SUFFIX
-
-    - name: LOG DEBUG Expression for full application name - Repo Variable and Env Variable
-      env:
-        AP_Full_Application_Name: ${{ format('{0}{1}', vars.AP_Application_Name, vars.AP_APPLICATION_NAME_SUFFIX) }}
-      run: echo $AP_Full_Application_Name
-
-    - name: LOG DEBUG Input? - ?
-      env:
-        Input: ${{ vars.INPUT_AP_APPLICATION_NAME_SUFFIX }}
-      run: echo $Input
+        AP_APPLICATION_NAME_SUFFIX: ${{  inputs.environment == 'Dev' && '-dev' || inputs.environment == 'UAT' && '-uat' || inputs.environment == 'Prod' && '-prod' || '' }}
+        AP_Full_Application_Name: ${{  format('{0}{1}', vars.AP_Application_Name, inputs.environment == 'Dev' && '-dev' || inputs.environment == 'UAT' && '-uat' || inputs.environment == 'Prod' && '-prod' || '') }}
+      run: |
+        echo $AP_Application_Name
+        echo $AP_APPLICATION_NAME_SUFFIX
+        echo AP_Full_Application_Name
 
     - name: LOG DEBUG PRIVATESPACE_SANDBOX_NAME - Org Variable
       env:
