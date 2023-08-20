@@ -49,6 +49,11 @@ jobs:
         AP_Full_Application_Name: ${{ format('{0}{1}', vars.AP_Application_Name, vars.AP_APPLICATION_NAME_SUFFIX) }}
       run: echo $AP_Full_Application_Name
 
+    - name: LOG DEBUG Input? - ?
+      env:
+        Input: ${{ $INPUT_AP_APPLICATION_NAME_SUFFIX }}
+      run: echo $AP_Full_Application_Name
+
     - name: LOG DEBUG PRIVATESPACE_SANDBOX_NAME - Org Variable
       env:
         PRIVATESPACE_SANDBOX_NAME: ${{ vars.PRIVATESPACE_SANDBOX_NAME }}
