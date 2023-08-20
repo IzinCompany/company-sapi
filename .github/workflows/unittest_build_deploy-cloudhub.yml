@@ -29,8 +29,7 @@ on:
         type: choice
         options:
         - Cloudhub-US-East-2
-      
-
+        
 jobs:
   unittest:
     runs-on: ubuntu-latest
@@ -40,9 +39,9 @@ jobs:
       run: echo Environment is ${{ inputs.environment }}
 
     - name: LOG DEBUG full application name
-    env:
-      AP_Application_Name: ${{ vars.AP_Application_Name }}
-      AP_APPLICATION_NAME_SUFFIX: ${{ vars.AP_APPLICATION_NAME_SUFFIX }}
+      env:
+        AP_Application_Name: ${{ vars.AP_Application_Name }}
+        AP_APPLICATION_NAME_SUFFIX: ${{ vars.AP_APPLICATION_NAME_SUFFIX }}
       run: echo $AP_Application_Name$AP_APPLICATION_NAME_SUFFIX
 
     - name: Check out this repo
@@ -153,4 +152,4 @@ jobs:
         AP_CICD_ConnectedApp_ClientSecret: ${{ secrets.AP_CICD_ConnectedApp_ClientSecret }}
         AP_Organization_ID: ${{ secrets.AP_Organization_ID }}
         AP_Environment: ${{ inputs.environment }}
-      run: mvn -B deploy -DmuleDeploy -DskipMunitTests -Denv.AP_Environment=$AP_Environment -Dapp.name=${{ vars.AP_Application_Name }}${{ vars.AP_APPLICATION_NAME_SUFFIX }}
+      run: mvn -B deploy -DmuleDeploy -DskipMunitTests -Denv.AP_Environment=$AP_Environment -Dapp.name=$AP_Application_Name$AP_APPLICATION_NAME_SUFFIX
