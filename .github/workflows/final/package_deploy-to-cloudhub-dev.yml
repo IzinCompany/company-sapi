@@ -1,0 +1,111 @@
+# This workflow will build a Java project with Maven, and cache/restore any dependencies to improve the workflow execution time
+# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-java-with-maven
+
+# This workflow uses actions that are not certified by GitHub.
+# They are provided by a third-party and are governed by
+# separate terms of service, privacy policy, and support
+# documentation.
+
+name: Package, and deploy to Cloud Hub - Dev
+
+on:
+  workflow_dispatch:
+    inputs:
+      runtimeVersion:
+        description: 'Version of the runtime that will run the deployed asset'
+        required: true
+        default: '4.4.0'
+        type: choice
+        options:
+        - 4.4.0
+
+jobs:
+  package:
+    runs-on: ubuntu-latest
+    environment: Dev
+    steps:    
+    - name: Check out this repo
+      id: checkout-repo
+      uses: actions/checkout@v3
+    
+    - name: Set up cache for Maven Dependencies(./m2/repository)
+      uses: actions/cache@v3
+      with:
+        path: ~/.m2/repository
+        key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
+        restore-keys: |
+          ${{ runner.os }}-maven-
+    
+    - name: Package the artifact
+      id: package
+      env:
+        MuleSoft_EE_Rep_Username: ${{ secrets.MuleSoft_EE_Rep_Username }}
+        MuleSoft_EE_Rep_Password: ${{ secrets.MuleSoft_EE_Rep_Password }}
+        AP_CICD_ConnectedApp_ClientID: ${{ secrets.AP_CICD_ConnectedApp_ClientID }}
+        AP_CICD_ConnectedApp_ClientSecret: ${{ secrets.AP_CICD_ConnectedApp_ClientSecret }}
+        AP_Organization_ID: ${{ secrets.AP_Organization_ID }}
+        AP_Environment: Dev
+        AP_ENV_ClientID: ${{ secrets.AP_DEV_ClientID }}
+        AP_ENV_ClientSecret: ${{ secrets.AP_DEV_ClientSecret }}
+        AP_Full_Application_Name: ${{  format('{0}{1}', vars.AP_Application_Name, vars.AP_DEV_APPLICATION_NAME_SUFFIX) }}
+        AP_CH_Runtime_Version: ${{ inputs.runtimeVersion }}
+        AP_Privatespace_Sandbox_Name: ${{ vars.AP_PrivateSpace_Sandbox_Name }}
+        AP_replicas: 1
+        AP_vcores: 0.1
+      run: mvn -B package -DskipMunitTests -s maven/settings.xml
+            -Denv.AP_Environment=$AP_Environment 
+            -Dapp.name=$AP_Full_Application_Name 
+            -DAP_Organization_ID=$AP_Organization_ID 
+            -DAP_CH_Runtime_Version=$AP_CH_Runtime_Version 
+            -DAP_CICD_ConnectedApp_ClientID=$AP_CICD_ConnectedApp_ClientID 
+            -DAP_CICD_ConnectedApp_ClientSecret=$AP_CICD_ConnectedApp_ClientSecret 
+            -DAP_ENV_ClientID=$AP_ENV_ClientID 
+            -DAP_ENV_ClientSecret=$AP_ENV_ClientSecret 
+            -DAP_CH_Runtime_Version=$AP_CH_Runtime_Version 
+            -DAP_Privatespace_Sandbox_Name=$AP_Privatespace_Sandbox_Name
+            -DAP_replicas=$AP_replicas
+            -DAP_vcores=$AP_vcores
+            -Dmule.env=$AP_Environment
+      
+    - name: Stamp artifact file name with commit hash
+      id: stamp-commit-hash
+      run: |
+        artifactName1=$(ls target/*.jar | head -1)
+        commitHash=$(git rev-parse --short "$GITHUB_SHA")
+        artifactName2=$(ls target/*.jar | head -1 | sed "s/.jar/-$commitHash.jar/g")
+        mv $artifactName1 $artifactName2
+
+    - name: Upload artifact
+      id: upload-artifact
+      uses: actions/upload-artifact@v3
+      with:
+        name: artifacts
+        path: target/*.jar
+
+  deployCloudHubDev:
+    needs: package
+    runs-on: ubuntu-latest
+    environment: Dev
+    steps:
+    - name: Check out this repo
+      id: checkout-repo
+      uses: actions/checkout@v3
+    
+    - name: Set up cache for Maven Dependencies(./m2/repository)
+      uses: actions/cache@v3
+      with:
+        path: ~/.m2/repository
+        key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
+        restore-keys: |
+          ${{ runner.os }}-maven-
+    
+    - name: Download artifact
+      id: download-artifact
+      uses: actions/download-artifact@v3
+      with:
+        name: artifacts
+        path: target/*.jar
+
+    - name: Deploy to Cloudhub on Dev
+      id: deploy-ch-dev
+      run: mvn -B deploy -DmuleDeploy -DskipMunitTests -s maven/settings.xml

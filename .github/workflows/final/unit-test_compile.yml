@@ -1,0 +1,73 @@
+# This workflow will build a Java project with Maven, and cache/restore any dependencies to improve the workflow execution time
+# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-java-with-maven
+
+# This workflow uses actions that are not certified by GitHub.
+# They are provided by a third-party and are governed by
+# separate terms of service, privacy policy, and support
+# documentation.
+
+name: Unit test and compile
+
+on:
+  workflow_dispatch:
+
+jobs:
+  unitTest:
+    runs-on: ubuntu-latest
+    steps:
+
+    - name: Check out this repo
+      id: checkout-repo
+      uses: actions/checkout@v3
+    
+    - name: Set up cache for Maven Dependencies(./m2/repository)
+      uses: actions/cache@v3
+      with:
+        path: ~/.m2/repository
+        key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
+        restore-keys: |
+          ${{ runner.os }}-maven-
+
+    - name: Setup JDK 8
+      id: setup-jdk
+      uses: actions/setup-java@v3
+      with:
+        java-version: '8'
+        distribution: 'zulu'
+    
+    - name: Run MUnits
+      id: run-munits
+      env:
+        MuleSoft_EE_Rep_Username: ${{ secrets.MuleSoft_EE_Rep_Username }}
+        MuleSoft_EE_Rep_Password: ${{ secrets.MuleSoft_EE_Rep_Password }}
+      run: mvn clean test -B -s .maven/settings.xml -DskipMunitTests
+
+  compile:
+    runs-on: ubuntu-latest
+    steps:
+
+    - name: Check out this repo
+      id: checkout-repo
+      uses: actions/checkout@v3
+    
+    - name: Set up cache for Maven Dependencies(./m2/repository)
+      uses: actions/cache@v3
+      with:
+        path: ~/.m2/repository
+        key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
+        restore-keys: |
+          ${{ runner.os }}-maven-
+
+    - name: Setup JDK 8
+      id: setup-jdk
+      uses: actions/setup-java@v3
+      with:
+        java-version: '8'
+        distribution: 'zulu'
+    
+    - name: Compile code
+      id: compile-code
+      env:
+        MuleSoft_EE_Rep_Username: ${{ secrets.MuleSoft_EE_Rep_Username }}
+        MuleSoft_EE_Rep_Password: ${{ secrets.MuleSoft_EE_Rep_Password }}
+      run: mvn clean compile -B -s .maven/settings.xml -DskipMunitTests
