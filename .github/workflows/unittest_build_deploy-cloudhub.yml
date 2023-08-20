@@ -33,7 +33,7 @@ on:
 jobs:
   unittest:
     runs-on: ubuntu-latest
-    environment: inputs.environment
+    environment: ${{ inputs.environment }}
     steps:
 
     - name: LOG DEBUG environment
@@ -42,7 +42,7 @@ jobs:
     - name: LOG DEBUG full application name - Repo Variable and Env Variable
       env:
         AP_Application_Name: ${{ vars.AP_Application_Name }}
-        AP_APPLICATION_NAME_SUFFIX: ${{  inputs.environment == 'Dev' && '-dev' || inputs.environment == 'UAT' && '-uat' || inputs.environment == 'Prod' && '-prod' || '' }}
+        AP_APPLICATION_NAME_SUFFIX: ${{  vars.AP_APPLICATION_NAME_SUFFIX }}
         AP_Full_Application_Name: ${{  format('{0}{1}', vars.AP_Application_Name, inputs.environment == 'Dev' && '-dev' || inputs.environment == 'UAT' && '-uat' || inputs.environment == 'Prod' && '-prod' || '') }}
       run: |
         echo $AP_Application_Name
