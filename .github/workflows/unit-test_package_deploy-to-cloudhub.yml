@@ -6,7 +6,7 @@
 # separate terms of service, privacy policy, and support
 # documentation.
 
-name: Run quick deploy to cloudhub
+name: Unit tests, package and deploy to Cloudhub on target environment
 
 on:
   workflow_dispatch:
