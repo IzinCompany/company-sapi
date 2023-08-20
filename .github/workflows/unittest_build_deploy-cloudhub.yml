@@ -40,7 +40,10 @@ jobs:
       run: echo Environment is ${{ inputs.environment }}
 
     - name: LOG DEBUG full application name
-      run: echo $AP_Application_Name $AP_APPLICATION_NAME_SUFFIX
+    env:
+      AP_Application_Name: ${{ vars.AP_Application_Name }}
+      AP_APPLICATION_NAME_SUFFIX: ${{ vars.AP_APPLICATION_NAME_SUFFIX }}
+      run: echo $AP_Application_Name$AP_APPLICATION_NAME_SUFFIX
 
     - name: Check out this repo
       id: checkout-repo
