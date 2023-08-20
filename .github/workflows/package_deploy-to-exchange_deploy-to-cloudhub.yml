@@ -78,8 +78,8 @@ jobs:
         commitHash=$(git rev-parse --short "$GITHUB_SHA")
         artifactName2=$(ls target/*.jar | head -1 | sed "s/.jar/-$commitHash.jar/g")
         mv $artifactName1 $artifactName2
-        artifactName=$(ls target/*.jar | head -1)
-        echo $artifactName
+        artifactPath=$(ls target/*.jar | head -1)
+        echo $artifactPath
 
     - name: Deploy to Exchange
       id: deploy-exchange
@@ -88,9 +88,9 @@ jobs:
         AP_CICD_ConnectedApp_ClientSecret: ${{ secrets.AP_CICD_ConnectedApp_ClientSecret }}
         AP_Organization_ID: ${{ secrets.AP_Organization_ID }}
       run: |
-        artifactName=$(ls target/*.jar | head -1)
-        echo $artifactName
-        mvn deploy -DskipMunitTests -s .maven/settings.xml -Dmule.artifact=target/$artifactName
+        artifactPath=$(ls target/*.jar | head -1)
+        echo $artifactPath
+        mvn deploy -DskipMunitTests -s .maven/settings.xml -Dmule.artifact=$artifactName
 
     - name: Deploy to Cloudhub on Dev
       id: deploy-ch-dev
@@ -99,6 +99,6 @@ jobs:
         AP_CICD_ConnectedApp_ClientSecret: ${{ secrets.AP_CICD_ConnectedApp_ClientSecret }}
         AP_Organization_ID: ${{ secrets.AP_Organization_ID }}
       run: |
-        artifactName=$(ls target/*.jar | head -1)
-        echo $artifactName
-        mvn deploy -DmuleDeploy -DskipMunitTests -s .maven/settings.xml -Dmule.artifact=target/$artifactName
+        artifactPath=$(ls target/*.jar | head -1)
+        echo $artifactPath
+        mvn deploy -DmuleDeploy -DskipMunitTests -s .maven/settings.xml -Dmule.artifact=$artifactName
