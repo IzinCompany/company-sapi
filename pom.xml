@@ -70,14 +70,16 @@
 						</deploymentSettings>
 						<properties>
 							<anypoint.platform.base_uri>https://anypoint.mulesoft.com/</anypoint.platform.base_uri>
-							<anypoint.platform.client_id>${env.AP_ENV_ClientID}</anypoint.platform.client_id>
-							<anypoint.platform.client_secret>${env.AP_ENV_ClientSecret}</anypoint.platform.client_secret>
-							<mule.env>${environment}</mule.env>
+							<mule.env>${env.AP_Environment}</mule.env>
 							<build.version>${build.version}</build.version>
 							<anypoint.platform.analytics_base_uri>
 								https://analytics-ingest.anypoint.mulesoft.com/</anypoint.platform.analytics_base_uri>
 							<anypoint.platform.config.analytics.agent.enabled>true</anypoint.platform.config.analytics.agent.enabled>
 						</properties>
+						<secureProperties>
+							<anypoint.platform.client_secret>${env.AP_ENV_ClientSecret}</anypoint.platform.client_secret>
+							<anypoint.platform.client_id>${env.AP_ENV_ClientID}</anypoint.platform.client_id>					
+						</secureProperties>
 					</cloudhub2Deployment>
 					<classifier>mule-application</classifier>
 				</configuration>
