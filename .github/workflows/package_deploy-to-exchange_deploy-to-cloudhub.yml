@@ -78,6 +78,7 @@ jobs:
         commitHash=$(git rev-parse --short "$GITHUB_SHA")
         artifactName2=$(ls target/*.jar | head -1 | sed "s/.jar/-$commitHash.jar/g")
         mv $artifactName1 $artifactName2
+        ls
 
     - name: Deploy to Exchange
       id: deploy-exchange
@@ -86,8 +87,10 @@ jobs:
         AP_CICD_ConnectedApp_ClientSecret: ${{ secrets.AP_CICD_ConnectedApp_ClientSecret }}
         AP_Organization_ID: ${{ secrets.AP_Organization_ID }}
       run: |
+        commitHash=$(git rev-parse --short "$GITHUB_SHA")
         artifactName=$(ls target/*.jar | head -1 | sed "s/.jar/-$commitHash.jar/g")
-        mvn -B deploy -DskipMunitTests -s .maven/settings.xml -Dmule.artifact=company-sapi-1.0.0-SNAPSHOT-mule-application-$commitHash.jar
+        ls
+        mvn -B deploy -DskipMunitTests -s .maven/settings.xml -Dmule.artifact=target/company-sapi-1.0.0-SNAPSHOT-mule-application-$commitHash.jar
 
     - name: Deploy to Cloudhub on Dev
       id: deploy-ch-dev
@@ -96,5 +99,7 @@ jobs:
         AP_CICD_ConnectedApp_ClientSecret: ${{ secrets.AP_CICD_ConnectedApp_ClientSecret }}
         AP_Organization_ID: ${{ secrets.AP_Organization_ID }}
       run: |
+        commitHash=$(git rev-parse --short "$GITHUB_SHA")
         artifactName=$(ls target/*.jar | head -1 | sed "s/.jar/-$commitHash.jar/g")
+        ls
         mvn -B deploy -DmuleDeploy -DskipMunitTests -s .maven/settings.xml -Dmule.artifact=company-sapi-1.0.0-SNAPSHOT-mule-application-$commitHash.jar
