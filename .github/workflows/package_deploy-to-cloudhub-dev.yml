@@ -52,7 +52,7 @@ jobs:
         AP_Privatespace_Sandbox_Name: ${{ vars.AP_PrivateSpace_Sandbox_Name }}
         AP_replicas: 1
         AP_vcores: 0.1
-      run: mvn -B package -DskipMunitTests -s maven/settings.xml
+      run: mvn -B package -DskipMunitTests -s .maven/settings.xml
             -Denv.AP_Environment=$AP_Environment 
             -Dapp.name=$AP_Full_Application_Name 
             -DAP_Organization_ID=$AP_Organization_ID 
@@ -108,4 +108,4 @@ jobs:
 
     - name: Deploy to Cloudhub on Dev
       id: deploy-ch-dev
-      run: mvn -B deploy -DmuleDeploy -DskipMunitTests -s maven/settings.xml
+      run: mvn -B deploy -DmuleDeploy -DskipMunitTests -s .maven/settings.xml
