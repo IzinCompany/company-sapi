@@ -29,6 +29,16 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     
+    - name: Log
+      env:
+        runtimeV: ${{ inputs.runtimeVersion }}
+        runtime_is_empty: ${{ inputs.runtimeVersion == '' }}
+        runtime_is_empty_or_not: ${{ inputs.runtimeVersion == '' && '1' || '2' }}
+      run: |
+        echo $runtimeV 
+        echo $runtime_is_empty
+        echo $runtime_is_empty_or_not
+
     - name: Check out this repo
       id: checkout-repo
       uses: actions/checkout@v3
