@@ -33,26 +33,7 @@ on:
 jobs:
   unittest:
     runs-on: ubuntu-latest
-    environment: ${{ inputs.environment }}
     steps:
-
-    - name: LOG DEBUG environment
-      run: echo Environment is ${{ inputs.environment }}
-
-    - name: LOG DEBUG full application name - Repo Variable and Env Variable
-      env:
-        AP_Application_Name: ${{ vars.AP_Application_Name }}
-        AP_APPLICATION_NAME_SUFFIX: ${{  vars.AP_APPLICATION_NAME_SUFFIX }}
-        AP_Full_Application_Name: ${{  format('{0}{1}', vars.AP_Application_Name, vars.AP_APPLICATION_NAME_SUFFIX) }}
-      run: |
-        echo $AP_Application_Name
-        echo $AP_APPLICATION_NAME_SUFFIX
-        echo $AP_Full_Application_Name
-
-    - name: LOG DEBUG PRIVATESPACE_SANDBOX_NAME - Org Variable
-      env:
-        PRIVATESPACE_SANDBOX_NAME: ${{ vars.PRIVATESPACE_SANDBOX_NAME }}
-      run: echo $PRIVATESPACE_SANDBOX_NAME
 
     - name: Check out this repo
       id: checkout-repo
@@ -113,7 +94,7 @@ jobs:
         AP_ENV_ClientID: ${{ inputs.environment == 'Dev' && secrets.AP_DEV_ClientID || inputs.environment == 'UAT' && secrets.AP_UAT_ClientID || inputs.environment == 'Prod' && secrets.AP_Prod_ClientID}}
         AP_ENV_ClientSecret: ${{ inputs.environment == 'Dev' && secrets.AP_DEV_ClientSecret || inputs.environment == 'UAT' && secrets.AP_UAT_ClientSecret || inputs.environment == 'Prod' && secrets.AP_Prod_ClientSecret}}
         AP_CH_Runtime_Version: ${{ inputs.runtimeVersion }}
-        environment: ${{ inputs.environment }}
+        AP_Privatespace_Sandbox_Name: ${{ vars.AP_PrivateSpace_Sandbox_Name }}
       run: mvn -B package -DskipMunitTests -s .maven/settings.xml
       
     - name: Stamp artifact file name with commit hash
@@ -137,6 +118,21 @@ jobs:
     environment: ${{ inputs.environment }}
     steps:
     
+#    - name: LOG DEBUG full application name - Repo Variable and Env Variable
+#      env:
+#        AP_Application_Name: ${{ vars.AP_Application_Name }}
+#        AP_APPLICATION_NAME_SUFFIX: ${{  vars.AP_APPLICATION_NAME_SUFFIX }}
+#        AP_Full_Application_Name: ${{  format('{0}{1}', vars.AP_Application_Name, vars.AP_APPLICATION_NAME_SUFFIX) }}
+#      run: |
+#        echo $AP_Application_Name
+#        echo $AP_APPLICATION_NAME_SUFFIX
+#        echo $AP_Full_Application_Name
+
+#    - name: LOG DEBUG AP_PrivateSpace_Sandbox_Name - Org Variable
+#      env:
+#        AP_PrivateSpace_Sandbox_Name: ${{ vars.AP_PrivateSpace_Sandbox_Name }}
+#      run: echo $AP_PrivateSpace_Sandbox_Name
+
     - name: Check out this repo
       id: checkout-repo
       uses: actions/checkout@v3
@@ -164,5 +160,5 @@ jobs:
         AP_CICD_ConnectedApp_ClientSecret: ${{ secrets.AP_CICD_ConnectedApp_ClientSecret }}
         AP_Organization_ID: ${{ secrets.AP_Organization_ID }}
         AP_Environment: ${{ inputs.environment }}
-        AP_Full_Application_Name: ${{  format('{0}{1}', vars.AP_Application_Name, vars.AP_APPLICATION_NAME_SUFFIX) }}
+        AP_Full_Application_Name: ${{  format('{0}{1}', vars.AP_Application_Name, inputs.environment == 'Dev' && vars.AP_DEV_APPLICATION_NAME_SUFFIX || inputs.environment == 'UAT' && vars.AP_UAT_APPLICATION_NAME_SUFFIX || inputs.environment == 'Prod' && vars.AP_PROD_APPLICATION_NAME_SUFFIX}}) }}
       run: mvn -B deploy -DmuleDeploy -DskipMunitTests -Denv.AP_Environment=$AP_Environment -Dapp.name=$AP_Full_Application_Name
