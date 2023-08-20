@@ -33,6 +33,7 @@ on:
 jobs:
   unittest:
     runs-on: ubuntu-latest
+    environment: inputs.environment
     steps:
 
     - name: LOG DEBUG environment
