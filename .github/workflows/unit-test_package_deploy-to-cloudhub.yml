@@ -31,7 +31,7 @@ on:
         - Cloudhub-US-East-2
 
 jobs:
-  quickDeployCH:
+  unitTest-package-deployCloudHub:
     name: Unit tests, package and deploy to Cloudhub on target environment
     runs-on: ubuntu-latest
     environment: ${{ inputs.environment }}
@@ -56,8 +56,8 @@ jobs:
         java-version: '8'
         distribution: 'zulu'
     
-    - name: Deploy to Cloudhub on ${{ inputs.environment }}
-      id: deployCH
+    - name: Run unit tests, package and deploy to Cloudhub on ${{ inputs.environment }}
+      id: unitTest-package-deployCH
       env:
         AP_CICD_ConnectedApp_ClientID: ${{ secrets.AP_CICD_ConnectedApp_ClientID }}
         AP_CICD_ConnectedApp_ClientSecret: ${{ secrets.AP_CICD_ConnectedApp_ClientSecret }}
