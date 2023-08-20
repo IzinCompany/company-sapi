@@ -90,6 +90,7 @@ jobs:
         commitHash=$(git rev-parse --short "$GITHUB_SHA")
         artifactName=$(ls target/*.jar | head -1 | sed "s/.jar/-$commitHash.jar/g")
         ls target/
+        echo $commitHash
         mvn -B deploy -DskipMunitTests -s .maven/settings.xml -Dmule.artifact=target/company-sapi-1.0.0-SNAPSHOT-mule-application-$commitHash.jar
 
     - name: Deploy to Cloudhub on Dev
@@ -103,4 +104,4 @@ jobs:
         artifactName=$(ls target/*.jar | head -1 | sed "s/.jar/-$commitHash.jar/g")
         ls target/
         echo $commitHash
-        mvn -B deploy -DmuleDeploy -DskipMunitTests -s .maven/settings.xml -Dmule.artifact=company-sapi-1.0.0-SNAPSHOT-mule-application-$commitHash.jar
+        mvn -B deploy -DmuleDeploy -DskipMunitTests -s .maven/settings.xml -Dmule.artifact=target/company-sapi-1.0.0-SNAPSHOT-mule-application-$commitHash.jar
