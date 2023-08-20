@@ -40,7 +40,7 @@ jobs:
       env:
         MuleSoft_EE_Rep_Username: ${{ secrets.MuleSoft_EE_Rep_Username }}
         MuleSoft_EE_Rep_Password: ${{ secrets.MuleSoft_EE_Rep_Password }}
-      run: mvn clean test -B -s .maven/settings.xml -DskipMunitTests
+      run: mvn clean test -B -s .maven/settings.xml
 
   compile:
     runs-on: ubuntu-latest
