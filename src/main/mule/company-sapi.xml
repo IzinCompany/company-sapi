@@ -10,7 +10,7 @@ http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/
 	</http:listener-config>
 	<flow name="company-sapiFlow" doc:id="aac08ae8-0ea0-4672-b2c8-94e6ccb2abff" >
 		<http:listener doc:name="Listener" doc:id="1f083159-b77a-4886-ae81-b2e2533b44b0" config-ref="HTTP_Listener_config" path="/"/>
-		<set-payload value='#[{&#10;	queryParams: {&#10;		param1: attributes.queryParams."param1" default "[EMPTY]"&#10;	}&#10;}]' doc:name="Set Payload" doc:id="008d8624-6a7e-4e61-afbc-48e553ca614e" />
+		<set-payload value='#[{&#10;	queryParams: {&#10;		param1: attributes.queryParams."param1" default "[EMPTY]"&#10;	},&#10;	env: {&#10;		currentEnv: "${mule.env}"&#10;	}&#10;}]' doc:name="Set Payload" doc:id="008d8624-6a7e-4e61-afbc-48e553ca614e" />
 		<ee:transform doc:name="Transform Message" doc:id="e1e6acfc-4c0e-40d9-95f9-07fda623efcc" >
 			<ee:message >
 				<ee:set-payload ><![CDATA[%dw 2.0

@@ -43,8 +43,8 @@
 						<connectedAppClientSecret>${AP_CICD_ConnectedApp_ClientSecret}</connectedAppClientSecret>
 						<connectedAppGrantType>client_credentials</connectedAppGrantType>
 						<applicationName>${app.name}</applicationName>
-						<replicas>1</replicas>
-						<vCores>0.1</vCores>
+						<replicas>${AP_replicas}</replicas>
+						<vCores>${AP_vcores}</vCores>
 						<businessGroupId>${AP_Organization_ID}</businessGroupId>
 						<integrations>
 							<services>
