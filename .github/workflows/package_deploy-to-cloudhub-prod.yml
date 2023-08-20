@@ -43,7 +43,10 @@ jobs:
 
     - name: Run Maven Release:Prepare
       id: run-maven-release-prepare
-      run: mvn release:prepare
+      env:
+        MuleSoft_EE_Rep_Username: ${{ secrets.MuleSoft_EE_Rep_Username }}
+        MuleSoft_EE_Rep_Password: ${{ secrets.MuleSoft_EE_Rep_Password }}
+      run: mvn release:prepare -s .maven/settings.xml
 
     - name: Deploy to Cloudhub on Prod
       id: deploy-ch-dev
