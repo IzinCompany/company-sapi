@@ -39,9 +39,6 @@ jobs:
     - name: LOG DEBUG environment
       run: echo Environment is ${{ inputs.environment }}
 
-    - name: LOG DEBUG full application name
-      run: echo format('{0}{1}','$AP_Application_Name', '$AP_APPLICATION_NAME_SUFFIX')
-
     - name: Check out this repo
       id: checkout-repo
       uses: actions/checkout@v3
