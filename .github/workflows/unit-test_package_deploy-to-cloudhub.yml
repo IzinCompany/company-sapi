@@ -32,6 +32,7 @@ on:
 
 jobs:
   quickDeployCH:
+    name: Unit tests, package and deploy to Cloudhub on target environment
     runs-on: ubuntu-latest
     environment: ${{ inputs.environment }}
     steps:
