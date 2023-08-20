@@ -14,7 +14,14 @@ on:
       - 'develop'
 
   workflow_dispatch:
-
+    inputs:
+      runtimeVersion:
+        description: 'Version of the runtime that will run the deployed asset'
+        required: true
+        default: '4.4.0'
+        type: choice
+        options:
+        - 4.4.0
 jobs:
   
   package:
