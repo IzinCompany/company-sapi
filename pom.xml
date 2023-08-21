@@ -54,6 +54,7 @@
 							</services>
 						</integrations>
 						<deploymentSettings>
+						 	<updateStrategy>recreate</updateStrategy>
 							<http>
 								<inbound>
 									<publicUrl>${publicURL}</publicUrl>
