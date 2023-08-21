@@ -6,7 +6,7 @@
 # separate terms of service, privacy policy, and support
 # documentation.
 
-name: Package, and deploy to exchange, then deploy to Cloud Hub - Dev
+name: Package, Deploy to exchange, Deploy to Cloud Hub - Dev
 
 on:
   workflow_dispatch:
@@ -58,7 +58,7 @@ jobs:
         AP_Environment: Dev
         AP_ENV_ClientID: ${{ secrets.AP_DEV_ClientID }}
         AP_ENV_ClientSecret: ${{ secrets.AP_DEV_ClientSecret }}
-        AP_Full_Application_Name: ${{  vars.AP_Application_Name }}
+        AP_Full_Application_Name: ${{  format('{0}{1}', vars.AP_Application_Name, vars.AP_DEV_APPLICATION_NAME_SUFFIX) }}
         AP_CH_Runtime_Version: ${{ inputs.runtimeVersion  }}
         AP_PrivateSpace_Sandbox_Name: ${{ vars.AP_PrivateSpace_Sandbox_Name }}
         AP_replicas: 1
