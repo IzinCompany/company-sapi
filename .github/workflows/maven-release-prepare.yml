@@ -1,0 +1,48 @@
+# This workflow will build a Java project with Maven, and cache/restore any dependencies to improve the workflow execution time
+# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-java-with-maven
+
+# This workflow uses actions that are not certified by GitHub.
+# They are provided by a third-party and are governed by
+# separate terms of service, privacy policy, and support
+# documentation.
+
+name: Prepare new PROD release
+
+on:
+  pull_request:
+    branches:
+      - 'main'
+    types:
+      - 'closed'
+
+  workflow_dispatch:
+
+jobs:
+  
+  maven_release_prepare:
+    name: Prepare and run mvn release:prepare goal
+    if: github.event.pull_request.merged
+    runs-on: ubuntu-latest
+    steps:
+    
+    - name: Check out this repo
+      id: checkout-repo
+      uses: actions/checkout@v3
+    
+    - name: Set up cache for Maven Dependencies(./m2/repository)
+      uses: actions/cache@v3
+      with:
+        path: ~/.m2/repository
+        key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
+        restore-keys: |
+          ${{ runner.os }}-maven-
+
+    - name: Run Maven Release:Prepare
+      id: run-maven-release-prepare
+      env:
+        MuleSoft_EE_Rep_Username: ${{ secrets.MuleSoft_EE_Rep_Username }}
+        MuleSoft_EE_Rep_Password: ${{ secrets.MuleSoft_EE_Rep_Password }}
+      run: |
+        git config --global user.email "cicd@izinCompany.com"
+        git config --global user.name "ConnectedApp CI/CD"
+        mvn release:prepare -s .maven/settings.xml
