@@ -33,7 +33,7 @@ jobs:
       env:
         runtimeV: ${{ inputs.runtimeVersion }}
         runtime_is_empty: ${{ inputs.runtimeVersion == '' }}
-        runtime_is_empty_or_not: ${{ inputs.runtimeVersion == '' && '1' || '2' }}
+        runtime_is_empty_or_not: ${{ inputs.runtimeVersion == '' && '4.4.0' || '2' }}
       run: |
         echo $runtimeV 
         echo $runtime_is_empty
@@ -81,7 +81,7 @@ jobs:
         AP_ENV_ClientID: ${{ secrets.AP_DEV_ClientID }}
         AP_ENV_ClientSecret: ${{ secrets.AP_DEV_ClientSecret }}
         AP_Full_Application_Name: ${{  format('{0}{1}', vars.AP_Application_Name, vars.AP_DEV_APPLICATION_NAME_SUFFIX) }}
-        AP_CH_Runtime_Version: ${{ inputs.runtimeVersion  }}
+        AP_CH_Runtime_Version: ${{ inputs.runtimeVersion == '' && '4.4.0' || inputs.runtimeVersion }}
         AP_Privatespace_Sandbox_Name: ${{ vars.AP_PrivateSpace_Sandbox_Name }}
         AP_replicas: 1
         AP_vcores: 0.1
