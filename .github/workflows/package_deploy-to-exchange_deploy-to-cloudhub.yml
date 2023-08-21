@@ -76,7 +76,7 @@ jobs:
         AP_replicas: 1
         AP_vcores: 0.1
       run: 
-        mvn mule:deploy -DmuleDeploy -DskipMunitTests -s .maven/settings.xml
+        mvn deploy -DmuleDeploy -DskipMunitTests -s .maven/settings.xml
             -Denv.AP_Environment=$AP_Environment 
             -Dapp.name=$AP_Full_Application_Name 
             -DAP_Organization_ID=$AP_Organization_ID 
