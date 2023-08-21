@@ -4,7 +4,7 @@
 
 	<groupId>ae21b73e-b561-4937-9ff3-25698a5edd0b</groupId>
 	<artifactId>company-sapi</artifactId>
-	<version>1.0.3-SNAPSHOT</version>
+	<version>1.0.4-SNAPSHOT</version>
 	<packaging>mule-application</packaging>
 
 	<name>company-sapi</name>
