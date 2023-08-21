@@ -9,9 +9,29 @@
 		http://www.mulesoft.org/schema/mule/munit-tools  http://www.mulesoft.org/schema/mule/munit-tools/current/mule-munit-tools.xsd">
 	<munit:config name="new-test-suite.xml" />
 	<munit:test name="new-test-suite-company-sapiFlowTest" doc:id="a90c1600-58a3-4b06-801b-c98fd4ab574e" description="Test">
+		<munit:behavior >
+			<munit-tools:mock-when doc:name="Mock when firstFeature" doc:id="0226a5f6-c9a1-4ec7-83e1-c0c1c8981409" processor="flow-ref">
+				<munit-tools:with-attributes >
+					<munit-tools:with-attribute whereValue="firstFeature" attributeName="doc:name" />
+				</munit-tools:with-attributes>
+			</munit-tools:mock-when>
+		</munit:behavior>
 		<munit:execution >
 			<flow-ref doc:name="Flow-ref to company-sapiFlow" doc:id="7109bfb6-af25-4365-b6fa-06171d229582" name="company-sapiFlow"/>
 		</munit:execution>
+	</munit:test>
+	<munit:test name="new-test-suiteTest" doc:id="fb10c048-7baf-4f8b-bcc0-947c9bc1cb1a" >
+		<munit:execution >
+			<set-payload value='#[{&#10;	a:1&#10;}]' doc:name="Set Payload" doc:id="a2967774-7fa1-47b8-b715-bcfe8d74a26c" />
+			<flow-ref doc:name="company-sapiSub_Flow" doc:id="1f5b4d22-dd1b-4e65-a361-3d0aa0479ee3" name="company-sapiSub_Flow"/>
+		</munit:execution>
+		<munit:validation >
+			<munit-tools:verify-call doc:name="Verify call" doc:id="10f16804-8784-4f59-ac06-da4a363acf7e" processor="ee:transform">
+				<munit-tools:with-attributes >
+					<munit-tools:with-attribute whereValue="eb212e06-a678-4433-b664-138546c01698" attributeName="doc:id" />
+				</munit-tools:with-attributes>
+			</munit-tools:verify-call>
+		</munit:validation>
 	</munit:test>
 
 
