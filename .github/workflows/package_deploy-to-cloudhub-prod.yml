@@ -20,7 +20,7 @@ on:
         - 4.4.0
 jobs:
   
-  package_deployEchange_deployCHProd:
+  package_deployExchange_deployCHProd:
     name: Package, and deploy to exchange, then deploy to Cloud Hub - Prod
     runs-on: ubuntu-latest
     steps:
@@ -36,16 +36,6 @@ jobs:
         key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
         restore-keys: |
           ${{ runner.os }}-maven-
-
-    - name: Run Maven Release:Prepare
-      id: run-maven-release-prepare
-      env:
-        MuleSoft_EE_Rep_Username: ${{ secrets.MuleSoft_EE_Rep_Username }}
-        MuleSoft_EE_Rep_Password: ${{ secrets.MuleSoft_EE_Rep_Password }}
-      run: |
-        git config --global user.email "cicd@izinCompany.com"
-        git config --global user.name "ConnectedApp CI/CD"
-        mvn release:prepare -s .maven/settings.xml
 
     - name: Checkout latest release tag
       run: |
