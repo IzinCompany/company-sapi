@@ -71,12 +71,12 @@ jobs:
         AP_ENV_ClientID: ${{ secrets.AP_DEV_ClientID }}
         AP_ENV_ClientSecret: ${{ secrets.AP_DEV_ClientSecret }}
         AP_Full_Application_Name: ${{  format('{0}{1}', vars.AP_Application_Name, vars.AP_DEV_APPLICATION_NAME_SUFFIX) }}
-        AP_CH_Runtime_Version: ${{ inputs.runtimeVersion  }}
+        AP_CH_Runtime_Version: ${{ inputs.runtimeVersion == '' && '4.4.0' || inputs.runtimeVersion }}
         AP_Privatespace_Sandbox_Name: ${{ vars.AP_PrivateSpace_Sandbox_Name }}
         AP_replicas: 1
         AP_vcores: 0.1
       run: 
-        mvn mule:deploy -DmuleDeploy -DskipMunitTests -s .maven/settings.xml
+        mvn deploy -DmuleDeploy -DskipMunitTests -s .maven/settings.xml
             -Denv.AP_Environment=$AP_Environment 
             -Dapp.name=$AP_Full_Application_Name 
             -DAP_Organization_ID=$AP_Organization_ID 
