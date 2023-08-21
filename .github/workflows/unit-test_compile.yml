@@ -9,6 +9,9 @@
 name: Unit test and compile
 
 on:
+  pull_request:
+    branches:
+      - 'develop'
   workflow_dispatch:
 
 jobs:
