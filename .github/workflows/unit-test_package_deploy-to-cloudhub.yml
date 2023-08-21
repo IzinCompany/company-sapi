@@ -6,7 +6,7 @@
 # separate terms of service, privacy policy, and support
 # documentation.
 
-name: Unit tests, package and deploy to Cloudhub on target environment
+name: Unit tests, package, deploy to Sandbox Cloudhub 
 
 on:
   workflow_dispatch:
@@ -22,6 +22,11 @@ on:
         type: choice
         options:
         - 4.4.0
+      deployExchange:
+        description: "Select to deploy to exchange before cloudhub"
+        required: true
+        default: false
+        type: boolean
       target:
         description: 'Private or shared space that is the target of the deployment'
         required: true
@@ -34,7 +39,8 @@ jobs:
   unitTest-package-deployCloudHub:
     name: Unit tests, package and deploy to Cloudhub on target environment
     runs-on: ubuntu-latest
-    environment: ${{ inputs.environment }}
+    environment: 
+      name: ${{ inputs.environment }}
     steps:
 
     - name: Check out this repo
@@ -55,7 +61,18 @@ jobs:
       with:
         java-version: '8'
         distribution: 'zulu'
-    
+  
+    - name: Package and deploy to Exchange
+      id: package-deploy-exchange
+      if: inputs.deployExchange
+      env:
+        MuleSoft_EE_Rep_Username: ${{ secrets.MuleSoft_EE_Rep_Username }}
+        MuleSoft_EE_Rep_Password: ${{ secrets.MuleSoft_EE_Rep_Password }}
+        AP_CICD_ConnectedApp_ClientID: ${{ secrets.AP_CICD_ConnectedApp_ClientID }}
+        AP_CICD_ConnectedApp_ClientSecret: ${{ secrets.AP_CICD_ConnectedApp_ClientSecret }}
+        AP_Organization_ID: ${{ secrets.AP_Organization_ID }}
+      run: mvn deploy -DskipMunitTests -s .maven/settings.xml
+
     - name: Run unit tests, package and deploy to Cloudhub on ${{ inputs.environment }}
       id: unitTest-package-deployCH
       env:
@@ -72,7 +89,7 @@ jobs:
         AP_vcores: 0.1
         MuleSoft_EE_Rep_Username: ${{ secrets.MuleSoft_EE_Rep_Username }}
         MuleSoft_EE_Rep_Password: ${{ secrets.MuleSoft_EE_Rep_Password }}
-      run: mvn clean deploy -B -s .maven/settings.xml -DmuleDeploy
+      run: mvn deploy -B -s .maven/settings.xml -DmuleDeploy
             -Denv.AP_Environment=$AP_Environment 
             -Dapp.name=$AP_Full_Application_Name 
             -DAP_Organization_ID=$AP_Organization_ID 
