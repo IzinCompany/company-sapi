@@ -1,4 +1,4 @@
 msg: "hello from UAT"
 v1Content: "Added new feature 1 in UAT"
 v2Content: "Added new feature 2 in UAT"
-a1Content: "Test string from UAT env, and oh sure new things."
+a1Content: "Test string from UAT env, and oh sure new things. And useless new things"
