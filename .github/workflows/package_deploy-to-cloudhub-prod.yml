@@ -6,7 +6,7 @@
 # separate terms of service, privacy policy, and support
 # documentation.
 
-name: Package, and deploy to exchange, then deploy to Cloud Hub - Prod
+name: Package, Deploy to exchange, Deploy to Cloud Hub - Dev - Prod
 
 on:
   workflow_dispatch:
