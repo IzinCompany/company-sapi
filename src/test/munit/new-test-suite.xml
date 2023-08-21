@@ -23,7 +23,6 @@
 	<munit:test name="new-test-suiteTest" doc:id="fb10c048-7baf-4f8b-bcc0-947c9bc1cb1a" >
 		<munit:execution >
 			<set-payload value='#[{&#10;	a:1&#10;}]' doc:name="Set Payload" doc:id="a2967774-7fa1-47b8-b715-bcfe8d74a26c" />
-			<flow-ref doc:name="company-sapiSub_Flow" doc:id="1f5b4d22-dd1b-4e65-a361-3d0aa0479ee3" name="company-sapiSub_Flow"/>
 		</munit:execution>
 		<munit:validation >
 			<munit-tools:verify-call doc:name="Verify call" doc:id="10f16804-8784-4f59-ac06-da4a363acf7e" processor="ee:transform">
