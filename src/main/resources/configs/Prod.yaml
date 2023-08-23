@@ -1,4 +1,0 @@
-msg: "hello from Prod"
-v1Content: "Added new feature 1 in Prod"
-v2Content: "Added new feature 2 in Prod"
-a1Content: "Test string from Prod env, and oh sure new things."
