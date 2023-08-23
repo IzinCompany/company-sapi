@@ -4,7 +4,7 @@
 
 	<groupId>ae21b73e-b561-4937-9ff3-25698a5edd0b</groupId>
 	<artifactId>company-sapi</artifactId>
-	<version>1.0.7-SNAPSHOT</version>
+	<version>1.0.0-SNAPSHOT</version>
 	<packaging>mule-application</packaging>
 
 	<name>company-sapi</name>
@@ -37,7 +37,7 @@
 						<uri>https://anypoint.mulesoft.com</uri>
 						<provider>MC</provider>
 						<environment>${AP_Environment}</environment>
-						<target>Cloudhub-US-East-2</target>
+						<target>${AP_Target}</target>
 						<muleVersion>${AP_CH_Runtime_Version}</muleVersion>
 						<connectedAppClientId>${AP_CICD_ConnectedApp_ClientID}</connectedAppClientId>
 						<connectedAppClientSecret>${AP_CICD_ConnectedApp_ClientSecret}</connectedAppClientSecret>

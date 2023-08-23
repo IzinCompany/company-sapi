@@ -13,12 +13,6 @@ http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/
 		<logger level="INFO" doc:name="Incoming request" doc:id="9a27eeb4-774c-4095-9c08-bb33b25c6f71" message="Incoming request"/>
 		<set-payload value="#[%dw 2.0&#10;output application/java&#10;---&#10;&#10;{&#10;	queryParams: {&#10;		param1: attributes.queryParams.&quot;param1&quot; default &quot;[EMPTY]&quot;&#10;	},&#10;	env: {&#10;		currentEnv: &quot;${mule.env}&quot;,&#10;		msg: p('msg')&#10;	}&#10;}]" doc:name="Set Payload" doc:id="008d8624-6a7e-4e61-afbc-48e553ca614e" />
 		<logger level="INFO" doc:name="After set payload" doc:id="0e2909ca-364b-4173-882e-35d96e367017" message="After set payload"/>
-		<flow-ref doc:name="firstFeature" doc:id="4193fe20-9ff2-4bdb-8521-e68ad5dc7310" name="company-sapiSub_Flow"/>
-		<logger level="INFO" doc:name="After firstFeature" doc:id="e401623c-7d64-4f6d-8798-ae8804fa3249" message="After firstFeature"/>
-		<flow-ref doc:name="secondFeature_Sub_Flow" doc:id="4bbe5ffc-bfdb-41fa-9689-bc0a3ad8cc6a" name="secondFeature_Sub_Flow"/>
-		<logger level="INFO" doc:name="After secondFeature" doc:id="d662c393-0166-4d9e-8145-660d4e6f7f21" message="After secondFeature"/>
-		<flow-ref doc:name="fourthFeature_Sub_Flow" doc:id="4d9b8eda-64a5-4fce-9af2-7df4f54a5d61" name="fourthFeature_Sub_Flow" />
-		<logger level="INFO" doc:name="After fourthFeature" doc:id="5b7a1f8a-dd96-46e6-b9fc-c8fe92887e88" message="After fourthFeature" />
 		<ee:transform doc:name="Transform to JSON" doc:id="e1e6acfc-4c0e-40d9-95f9-07fda623efcc">
 			<ee:message>
 				<ee:set-payload><![CDATA[%dw 2.0
@@ -27,6 +21,6 @@ output application/json
 payload]]></ee:set-payload>
 			</ee:message>
 		</ee:transform>
-		<logger level="INFO" doc:name="Logger" doc:id="7bda6c22-5e0e-49d7-a8a4-d3fbf241f046" message="#[payload]"/>
+		<logger level="INFO" doc:name="Show JSON payload" doc:id="7bda6c22-5e0e-49d7-a8a4-d3fbf241f046" message="#[payload]"/>
 	</flow>
 </mule>

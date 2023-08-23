@@ -65,9 +65,9 @@ jobs:
         AP_ENV_ClientSecret: ${{ secrets.AP_Prod_ClientSecret }}
         AP_Full_Application_Name: ${{  vars.AP_Application_Name }}
         AP_CH_Runtime_Version: ${{ inputs.runtimeVersion  }}
-        AP_PrivateSpace_Prod_Name: ${{ vars.AP_PrivateSpace_Prod_Name }}
-        AP_replicas: 1
-        AP_vcores: 0.1
+        AP_Target: ${{ vars.AP_PrivateSpace_Prod_Name}}
+        AP_replicas: ${{ vars.AP_replicas }}
+        AP_vcores: ${{ vars.AP_vcores }}
       run: 
         mvn deploy -DmuleDeploy -DskipMunitTests -s .maven/settings.xml
             -Denv.AP_Environment=$AP_Environment 
@@ -78,7 +78,7 @@ jobs:
             -DAP_ENV_ClientID=$AP_ENV_ClientID 
             -DAP_ENV_ClientSecret=$AP_ENV_ClientSecret 
             -DAP_CH_Runtime_Version=$AP_CH_Runtime_Version 
-            -DAP_Privatespace_Sandbox_Name=$AP_PrivateSpace_Prod_Name
+            -DAP_Target=$AP_Target
             -DAP_replicas=$AP_replicas
             -DAP_vcores=$AP_vcores
             -Dmule.env=$AP_Environment

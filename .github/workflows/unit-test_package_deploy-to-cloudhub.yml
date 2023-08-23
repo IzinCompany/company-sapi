@@ -27,13 +27,6 @@ on:
         required: true
         default: false
         type: boolean
-      target:
-        description: 'Private or shared space that is the target of the deployment'
-        required: true
-        default: 'Cloudhub-US-East-2'
-        type: choice
-        options:
-        - Cloudhub-US-East-2
 
 jobs:
   unitTest-package-deployCloudHub:
@@ -84,9 +77,9 @@ jobs:
         AP_ENV_ClientSecret: ${{ inputs.environment == 'Dev' && secrets.AP_DEV_ClientSecret || inputs.environment == 'UAT' && secrets.AP_UAT_ClientSecret || inputs.environment == 'Prod' && secrets.AP_Prod_ClientSecret}}
         AP_Full_Application_Name: ${{  format('{0}{1}', vars.AP_Application_Name, inputs.environment == 'Dev' && vars.AP_DEV_APPLICATION_NAME_SUFFIX || inputs.environment == 'UAT' && vars.AP_UAT_APPLICATION_NAME_SUFFIX || inputs.environment == 'Prod' && vars.AP_PROD_APPLICATION_NAME_SUFFIX) }}
         AP_CH_Runtime_Version: ${{ inputs.runtimeVersion }}
-        AP_Privatespace_Sandbox_Name: ${{ vars.AP_PrivateSpace_Sandbox_Name }}
-        AP_replicas: 1
-        AP_vcores: 0.1
+        AP_Target: ${{ inputs.environment == 'Prod' && vars.AP_PrivateSpace_Prod_Name || vars.AP_PrivateSpace_Sandbox_Name }}
+        AP_replicas: ${{ vars.AP_replicas }}
+        AP_vcores: ${{ vars.AP_vcores }}
         MuleSoft_EE_Rep_Username: ${{ secrets.MuleSoft_EE_Rep_Username }}
         MuleSoft_EE_Rep_Password: ${{ secrets.MuleSoft_EE_Rep_Password }}
       run: mvn deploy -B -s .maven/settings.xml -DmuleDeploy
@@ -99,7 +92,7 @@ jobs:
             -DAP_ENV_ClientID=$AP_ENV_ClientID 
             -DAP_ENV_ClientSecret=$AP_ENV_ClientSecret 
             -DAP_CH_Runtime_Version=$AP_CH_Runtime_Version 
-            -DAP_Privatespace_Sandbox_Name=$AP_Privatespace_Sandbox_Name
+            -DAP_Target=$AP_Target
             -DAP_replicas=$AP_replicas
             -DAP_vcores=$AP_vcores
             -Dmule.env=$AP_Environment
