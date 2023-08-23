@@ -4,7 +4,7 @@
 
 	<groupId>ae21b73e-b561-4937-9ff3-25698a5edd0b</groupId>
 	<artifactId>company-sapi</artifactId>
-	<version>1.0.6</version>
+	<version>1.0.7-SNAPSHOT</version>
 	<packaging>mule-application</packaging>
 
 	<name>company-sapi</name>
@@ -18,7 +18,7 @@
 	</properties>
 	<scm>
 		<developerConnection>scm:git:https://github.com/IzinCompany/company-sapi.git</developerConnection>
-		<tag>v1.0.6</tag>
+		<tag>HEAD</tag>
 	</scm>
 	<build>
 		<plugins>
