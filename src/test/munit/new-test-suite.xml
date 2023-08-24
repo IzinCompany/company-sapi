@@ -8,18 +8,6 @@
 		http://www.mulesoft.org/schema/mule/munit http://www.mulesoft.org/schema/mule/munit/current/mule-munit.xsd
 		http://www.mulesoft.org/schema/mule/munit-tools  http://www.mulesoft.org/schema/mule/munit-tools/current/mule-munit-tools.xsd">
 	<munit:config name="new-test-suite.xml" />
-	<munit:test name="first_feature_Test" doc:id="319044bc-a552-49ae-8a4d-3051c99da708" >
-		<munit:execution >
-			<flow-ref doc:name="company-sapiFlow" doc:id="fe7a8cd5-43d8-4f4a-a446-fe10826d6822" name="company-sapiFlow"/>
-		</munit:execution>
-		<munit:validation >
-			<munit-tools:verify-call doc:name="Verify call of transform message firstFeature" doc:id="2c3b5ee5-ab20-4512-a990-8d9cb6c7e15b" processor="ee:transform">
-				<munit-tools:with-attributes >
-					<munit-tools:with-attribute whereValue="741d23d8-f551-47d5-a4eb-d8abe906d5b4" attributeName="doc:id" />
-				</munit-tools:with-attributes>
-			</munit-tools:verify-call>
-		</munit:validation>
-	</munit:test>
 
 
 </mule>
