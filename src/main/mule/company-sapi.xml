@@ -13,6 +13,8 @@ http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/
 		<logger level="INFO" doc:name="Incoming request" doc:id="9a27eeb4-774c-4095-9c08-bb33b25c6f71" message="Incoming request"/>
 		<set-payload value="#[%dw 2.0&#10;output application/java&#10;---&#10;&#10;{&#10;	queryParams: {&#10;		param1: attributes.queryParams.&quot;param1&quot; default &quot;[EMPTY]&quot;&#10;	},&#10;	env: {&#10;		currentEnv: &quot;${mule.env}&quot;,&#10;		msg: p('msg')&#10;	}&#10;}]" doc:name="Set Payload" doc:id="008d8624-6a7e-4e61-afbc-48e553ca614e" />
 		<logger level="INFO" doc:name="After set payload" doc:id="0e2909ca-364b-4173-882e-35d96e367017" message="After set payload"/>
+		<flow-ref doc:name="first_featureSub_Flow" doc:id="b54f10a8-c887-4510-a273-a256b1a74b09" name="first_featureSub_Flow"/>
+		<logger level="INFO" doc:name="After first_featureSub_Flow" doc:id="c6740648-f8df-44e9-9ebb-bf0de29b7e79" message="After first_featureSub_Flow"/>
 		<ee:transform doc:name="Transform to JSON" doc:id="e1e6acfc-4c0e-40d9-95f9-07fda623efcc">
 			<ee:message>
 				<ee:set-payload><![CDATA[%dw 2.0
