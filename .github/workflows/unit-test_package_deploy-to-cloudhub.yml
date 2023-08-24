@@ -76,7 +76,7 @@ jobs:
         AP_ENV_ClientID: ${{ inputs.environment == 'Dev' && secrets.AP_DEV_ClientID || inputs.environment == 'UAT' && secrets.AP_UAT_ClientID || inputs.environment == 'Prod' && secrets.AP_Prod_ClientID}}
         AP_ENV_ClientSecret: ${{ inputs.environment == 'Dev' && secrets.AP_DEV_ClientSecret || inputs.environment == 'UAT' && secrets.AP_UAT_ClientSecret || inputs.environment == 'Prod' && secrets.AP_Prod_ClientSecret}}
         AP_Full_Application_Name: ${{  format('{0}{1}', vars.AP_Application_Name, inputs.environment == 'Dev' && vars.AP_DEV_APPLICATION_NAME_SUFFIX || inputs.environment == 'UAT' && vars.AP_UAT_APPLICATION_NAME_SUFFIX || inputs.environment == 'Prod' && vars.AP_PROD_APPLICATION_NAME_SUFFIX) }}
-        AP_CH_Runtime_Version: ${{ inputs.runtimeVersion }}
+        AP_CH_Runtime_Version: ${{ inputs.runtimeVersion == '' && '4.4.0' || inputs.runtimeVersion }}
         AP_Target: ${{ inputs.environment == 'Prod' && vars.AP_PrivateSpace_Prod_Name || vars.AP_PrivateSpace_Sandbox_Name }}
         AP_replicas: ${{ vars.AP_replicas }}
         AP_vcores: ${{ vars.AP_vcores }}
@@ -86,7 +86,6 @@ jobs:
             -Denv.AP_Environment=$AP_Environment 
             -Dapp.name=$AP_Full_Application_Name 
             -DAP_Organization_ID=$AP_Organization_ID 
-            -DAP_CH_Runtime_Version=$AP_CH_Runtime_Version 
             -DAP_CICD_ConnectedApp_ClientID=$AP_CICD_ConnectedApp_ClientID 
             -DAP_CICD_ConnectedApp_ClientSecret=$AP_CICD_ConnectedApp_ClientSecret 
             -DAP_ENV_ClientID=$AP_ENV_ClientID 
