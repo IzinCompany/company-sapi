@@ -4,7 +4,7 @@
 
 	<groupId>ae21b73e-b561-4937-9ff3-25698a5edd0b</groupId>
 	<artifactId>company-sapi</artifactId>
-	<version>1.0.1-SNAPSHOT</version>
+	<version>1.0.0-SNAPSHOT</version>
 	<packaging>mule-application</packaging>
 
 	<name>company-sapi</name>
@@ -17,7 +17,7 @@
 		<munit.version>2.3.14</munit.version>
 	</properties>
 	<scm>
-		<developerConnection>scm:git:https://github.com/IzinCompany/verbose-meme.git</developerConnection>
+		<developerConnection>scm:git:https://github.com/IzinCompany/special-telegram.git</developerConnection>
 		<tag>HEAD</tag>
 	</scm>
 	<build>
