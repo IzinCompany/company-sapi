@@ -64,7 +64,7 @@ jobs:
         AP_ENV_ClientID: ${{ secrets.AP_Prod_ClientID }}
         AP_ENV_ClientSecret: ${{ secrets.AP_Prod_ClientSecret }}
         AP_Full_Application_Name: ${{  vars.AP_Application_Name }}
-        AP_CH_Runtime_Version: ${{ inputs.runtimeVersion  }}
+        AP_CH_Runtime_Version: ${{ inputs.runtimeVersion == '' && '4.4.0' || inputs.runtimeVersion }}
         AP_Target: ${{ vars.AP_PrivateSpace_Prod_Name}}
         AP_replicas: ${{ vars.AP_replicas }}
         AP_vcores: ${{ vars.AP_vcores }}
