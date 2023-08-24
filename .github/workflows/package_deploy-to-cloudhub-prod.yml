@@ -23,6 +23,8 @@ jobs:
   package_deployExchange_deployCHProd:
     name: Package, and deploy to exchange, then deploy to Cloud Hub - Prod
     runs-on: ubuntu-latest
+    environment: 
+      name: Prod
     steps:
     
     - name: Check out this repo

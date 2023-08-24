@@ -29,6 +29,8 @@ jobs:
   package_deployExchange_deployCHDev:
     name: Package, and deploy to exchange, then deploy to Cloud Hub - Dev
     runs-on: ubuntu-latest
+    environment: 
+      name: Dev
     steps:
     
     - name: Check out this repo
