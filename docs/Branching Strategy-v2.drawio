@@ -1,6 +1,6 @@
-<mxfile host="Electron" modified="2023-08-23T22:25:38.301Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/21.6.5 Chrome/114.0.5735.243 Electron/25.3.1 Safari/537.36" etag="S1tEWrZouaycdnSj8TbF" version="21.6.5" type="device" pages="4">
+<mxfile host="Electron" modified="2023-08-23T23:41:36.973Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/21.6.5 Chrome/114.0.5735.243 Electron/25.3.1 Safari/537.36" etag="f7GJrzQDqT1okhf1LBrF" version="21.6.5" type="device" pages="4">
   <diagram name="New API" id="fMP-62zq0Drh8fqxtAuL">
-    <mxGraphModel dx="1703" dy="972" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="1201" dy="685" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -181,9 +181,6 @@
         <mxCell id="0-SgvkXSxN-I-1zcTVwH-3" value="" style="image;sketch=0;aspect=fixed;html=1;points=[];align=center;fontSize=12;image=img/lib/mscae/Person.svg;" parent="1" vertex="1">
           <mxGeometry x="581.0999999999999" y="330" width="10.36" height="14" as="geometry" />
         </mxCell>
-        <mxCell id="Vy9VifHJTtyrVydcVovC-1" value="" style="image;sketch=0;aspect=fixed;html=1;points=[];align=center;fontSize=12;image=img/lib/mscae/Person.svg;" parent="1" vertex="1">
-          <mxGeometry x="499.81" y="330" width="10.36" height="14" as="geometry" />
-        </mxCell>
         <mxCell id="Vy9VifHJTtyrVydcVovC-2" value="&lt;h1&gt;Step 8&lt;/h1&gt;&lt;p&gt;- After approval of PR, the commit on the MAIN branch will trigger the CI to run the Maven Release Plugin Prepare goal, to remove the *-SNAPSHOT from version, create a TAG in the MAIN branch named after the release version,&amp;nbsp;&lt;span style=&quot;background-color: initial;&quot;&gt;change the version on POM.xml to the next minor version, append the suffix&amp;nbsp;&lt;/span&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;*-SNAPSHOT to it and commit.&lt;/span&gt;&lt;/p&gt;" style="text;html=1;strokeColor=none;fillColor=none;spacing=5;spacingTop=-20;whiteSpace=wrap;overflow=hidden;rounded=0;" parent="1" vertex="1">
           <mxGeometry x="135.61" y="619.5" width="169.22" height="260.5" as="geometry" />
         </mxCell>
@@ -203,7 +200,7 @@
           <mxGeometry x="616.2500000000001" y="607" width="10.36" height="14" as="geometry" />
         </mxCell>
         <mxCell id="Vy9VifHJTtyrVydcVovC-13" value="" style="image;sketch=0;aspect=fixed;html=1;points=[];align=center;fontSize=12;image=img/lib/mscae/Person.svg;" parent="1" vertex="1">
-          <mxGeometry x="349.34000000000015" y="877.5" width="10.36" height="14" as="geometry" />
+          <mxGeometry x="361.48000000000013" y="807" width="10.36" height="14" as="geometry" />
         </mxCell>
         <mxCell id="Vy9VifHJTtyrVydcVovC-15" value="" style="image;points=[];aspect=fixed;html=1;align=center;shadow=0;dashed=0;image=img/lib/allied_telesis/computer_and_terminals/Server_Desktop.svg;" parent="1" vertex="1">
           <mxGeometry x="120.24999999999996" y="669.5" width="15.78" height="20" as="geometry" />
@@ -212,19 +209,7 @@
           <mxGeometry x="120.00000000000007" y="942.5" width="10.36" height="14" as="geometry" />
         </mxCell>
         <mxCell id="Vy9VifHJTtyrVydcVovC-17" value="&lt;h1&gt;Step 7&lt;/h1&gt;&lt;p&gt;- Raise PR from DEVELOP branch to MAIN branch&lt;/p&gt;&lt;p&gt;- CI triggers unit testing execution and compilation.&amp;nbsp;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;" style="text;html=1;strokeColor=none;fillColor=none;spacing=5;spacingTop=-20;whiteSpace=wrap;overflow=hidden;rounded=0;" parent="1" vertex="1">
-          <mxGeometry x="362.41" y="825.5" width="170.68" height="164.5" as="geometry" />
-        </mxCell>
-        <mxCell id="ddQQ5UHYENpUPduiLBml-3" value="" style="image;sketch=0;aspect=fixed;html=1;points=[];align=center;fontSize=12;image=img/lib/mscae/Person.svg;" parent="1" vertex="1">
-          <mxGeometry x="425.6500000000001" y="331.5" width="6.66" height="9" as="geometry" />
-        </mxCell>
-        <mxCell id="ddQQ5UHYENpUPduiLBml-4" value="" style="image;points=[];aspect=fixed;html=1;align=center;shadow=0;dashed=0;image=img/lib/allied_telesis/computer_and_terminals/Server_Desktop.svg;" parent="1" vertex="1">
-          <mxGeometry x="414.6" y="330.5" width="8.68" height="11" as="geometry" />
-        </mxCell>
-        <mxCell id="ddQQ5UHYENpUPduiLBml-5" value="" style="endArrow=none;html=1;rounded=0;" parent="1" edge="1">
-          <mxGeometry width="50" height="50" relative="1" as="geometry">
-            <mxPoint x="422.93000000000006" y="342.5" as="sourcePoint" />
-            <mxPoint x="425.93000000000006" y="330.5" as="targetPoint" />
-          </mxGeometry>
+          <mxGeometry x="374.55" y="755" width="170.68" height="164.5" as="geometry" />
         </mxCell>
         <mxCell id="ddQQ5UHYENpUPduiLBml-9" value="&lt;h1&gt;Step 9&lt;/h1&gt;&lt;p&gt;- Raise PR from MAIN branch to DEVELOP branch to sync version for next release.&lt;/p&gt;" style="text;html=1;strokeColor=none;fillColor=none;spacing=5;spacingTop=-20;whiteSpace=wrap;overflow=hidden;rounded=0;" parent="1" vertex="1">
           <mxGeometry x="131.86" y="890.5" width="169.22" height="100" as="geometry" />
@@ -324,14 +309,11 @@
         <mxCell id="Dxgz9rszbo_4D05CJYHF-2" value="" style="image;points=[];aspect=fixed;html=1;align=center;shadow=0;dashed=0;image=img/lib/allied_telesis/computer_and_terminals/Server_Desktop.svg;" parent="1" vertex="1">
           <mxGeometry x="614.22" y="792" width="15.78" height="20" as="geometry" />
         </mxCell>
-        <mxCell id="K3WMHOtgFFXaqqps3xGb-1" value="&lt;h1&gt;Step 6&lt;/h1&gt;&lt;p&gt;- Developer can deploy to DEV/UAT manually&lt;br&gt;&lt;/p&gt;&lt;p&gt;- Commits to fix/adjust go straight into DEVELOP branch&lt;/p&gt;&lt;p&gt;- CI triggers unit testing execution compilation after the commit.&lt;br&gt;&lt;/p&gt;" style="text;html=1;strokeColor=none;fillColor=none;spacing=5;spacingTop=-20;whiteSpace=wrap;overflow=hidden;rounded=0;" parent="1" vertex="1">
-          <mxGeometry x="368.1300000000001" y="619.5" width="170.68" height="200" as="geometry" />
+        <mxCell id="K3WMHOtgFFXaqqps3xGb-1" value="&lt;h1&gt;Step 6&lt;/h1&gt;&lt;p&gt;- Developer can deploy to DEV/UAT manually&lt;br&gt;&lt;/p&gt;&lt;p&gt;- Commits to fix/adjust go straight into DEVELOP branch&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;" style="text;html=1;strokeColor=none;fillColor=none;spacing=5;spacingTop=-20;whiteSpace=wrap;overflow=hidden;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="368.13" y="619.5" width="170.68" height="130.5" as="geometry" />
         </mxCell>
         <mxCell id="BD7lznSAvsFT2N_wlbj9-1" value="" style="image;sketch=0;aspect=fixed;html=1;points=[];align=center;fontSize=12;image=img/lib/mscae/Person.svg;" parent="1" vertex="1">
           <mxGeometry x="356.0600000000002" y="712" width="10.36" height="14" as="geometry" />
-        </mxCell>
-        <mxCell id="BD7lznSAvsFT2N_wlbj9-3" value="" style="image;points=[];aspect=fixed;html=1;align=center;shadow=0;dashed=0;image=img/lib/allied_telesis/computer_and_terminals/Server_Desktop.svg;" parent="1" vertex="1">
-          <mxGeometry x="353.35000000000014" y="750" width="15.78" height="20" as="geometry" />
         </mxCell>
         <mxCell id="TovejZj6ZNhs-I5Veo37-1" value="" style="image;sketch=0;aspect=fixed;html=1;points=[];align=center;fontSize=12;image=img/lib/mscae/Person.svg;" parent="1" vertex="1">
           <mxGeometry x="616.2500000000001" y="647" width="10.36" height="14" as="geometry" />
@@ -340,19 +322,34 @@
           <mxGeometry x="356.0600000000002" y="672.5" width="10.36" height="14" as="geometry" />
         </mxCell>
         <mxCell id="TovejZj6ZNhs-I5Veo37-3" value="" style="image;points=[];aspect=fixed;html=1;align=center;shadow=0;dashed=0;image=img/lib/allied_telesis/computer_and_terminals/Server_Desktop.svg;" parent="1" vertex="1">
-          <mxGeometry x="343.92" y="915.5" width="15.78" height="20" as="geometry" />
+          <mxGeometry x="356.06" y="845" width="15.78" height="20" as="geometry" />
         </mxCell>
-        <mxCell id="ozvgKpE6U1wtc8mPDzG5-1" value="" style="image;sketch=0;aspect=fixed;html=1;points=[];align=center;fontSize=12;image=img/lib/mscae/Person.svg;" vertex="1" parent="1">
+        <mxCell id="ozvgKpE6U1wtc8mPDzG5-1" value="" style="image;sketch=0;aspect=fixed;html=1;points=[];align=center;fontSize=12;image=img/lib/mscae/Person.svg;" parent="1" vertex="1">
           <mxGeometry x="275" y="500" width="10.36" height="14" as="geometry" />
         </mxCell>
-        <mxCell id="Q92Z3XEuI8HdzEAgWEK0-1" value="" style="image;points=[];aspect=fixed;html=1;align=center;shadow=0;dashed=0;image=img/lib/allied_telesis/computer_and_terminals/Server_Desktop.svg;" vertex="1" parent="1">
+        <mxCell id="Q92Z3XEuI8HdzEAgWEK0-1" value="" style="image;points=[];aspect=fixed;html=1;align=center;shadow=0;dashed=0;image=img/lib/allied_telesis/computer_and_terminals/Server_Desktop.svg;" parent="1" vertex="1">
           <mxGeometry x="615" y="847" width="15.78" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="pqtRHzjrVVZbtRlTOg-j-1" value="" style="image;sketch=0;aspect=fixed;html=1;points=[];align=center;fontSize=12;image=img/lib/mscae/Person.svg;" vertex="1" parent="1">
+          <mxGeometry x="417.6" y="328.5" width="10.36" height="14" as="geometry" />
+        </mxCell>
+        <mxCell id="pqtRHzjrVVZbtRlTOg-j-2" value="" style="image;sketch=0;aspect=fixed;html=1;points=[];align=center;fontSize=12;image=img/lib/mscae/Person.svg;" vertex="1" parent="1">
+          <mxGeometry x="507.65000000000003" y="332" width="6.66" height="9" as="geometry" />
+        </mxCell>
+        <mxCell id="pqtRHzjrVVZbtRlTOg-j-3" value="" style="image;points=[];aspect=fixed;html=1;align=center;shadow=0;dashed=0;image=img/lib/allied_telesis/computer_and_terminals/Server_Desktop.svg;" vertex="1" parent="1">
+          <mxGeometry x="496.59999999999997" y="331" width="8.68" height="11" as="geometry" />
+        </mxCell>
+        <mxCell id="pqtRHzjrVVZbtRlTOg-j-4" value="" style="endArrow=none;html=1;rounded=0;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="504.93" y="343" as="sourcePoint" />
+            <mxPoint x="507.93" y="331" as="targetPoint" />
+          </mxGeometry>
         </mxCell>
       </root>
     </mxGraphModel>
   </diagram>
   <diagram id="cAJn-cwfC_N8Tn0snRjz" name="New feature in existing API">
-    <mxGraphModel dx="1410" dy="804" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="1167" dy="665" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -443,7 +440,7 @@
           </mxGeometry>
         </mxCell>
         <mxCell id="dGexSLDNsyLbKqKM4UDD-20" value="Step 2" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
-          <mxGeometry x="212" y="486" width="45" height="15" as="geometry" />
+          <mxGeometry x="217.5" y="490" width="45" height="15" as="geometry" />
         </mxCell>
         <mxCell id="dGexSLDNsyLbKqKM4UDD-24" value="Step 3" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
           <mxGeometry x="297.5" y="410" width="45" height="15" as="geometry" />
@@ -594,8 +591,8 @@
         <mxCell id="OXfMVgo-bKoFeGR6O4aJ-3" value="&lt;h1&gt;Step 3&lt;/h1&gt;&lt;p&gt;&lt;/p&gt;- Raise PR from FEATURE/XYZ branch to DEVELOP branch&lt;p&gt;-CI triggers unit testing execution and compilation and show output on PR.&lt;br&gt;&lt;/p&gt;&lt;p&gt;- On PR closed and merged, trigger deployment to exchange and then to CloudHub on DEV environment.&lt;br&gt;&lt;/p&gt;" style="text;html=1;strokeColor=none;fillColor=none;spacing=5;spacingTop=-20;whiteSpace=wrap;overflow=hidden;rounded=0;" parent="1" vertex="1">
           <mxGeometry x="630" y="459" width="170" height="251" as="geometry" />
         </mxCell>
-        <mxCell id="OXfMVgo-bKoFeGR6O4aJ-4" value="&lt;h1&gt;Step 4&lt;/h1&gt;&lt;p&gt;- Developer can deploy to DEV/UAT manually&lt;/p&gt;&lt;p&gt;- Commits to fix/adjusts goes straight into DEVELOP&lt;/p&gt;&lt;p&gt;- CI triggers unit testing execution and compilation and show output on PR.&lt;br&gt;&lt;/p&gt;" style="text;html=1;strokeColor=none;fillColor=none;spacing=5;spacingTop=-20;whiteSpace=wrap;overflow=hidden;rounded=0;" parent="1" vertex="1">
-          <mxGeometry x="429.32000000000005" y="619" width="170.68" height="200" as="geometry" />
+        <mxCell id="OXfMVgo-bKoFeGR6O4aJ-4" value="&lt;h1&gt;Step 4&lt;/h1&gt;- Commits to fix/adjusts goes straight into DEVELOP&lt;p&gt;- Developer can deploy to DEV/UAT manually&lt;/p&gt;" style="text;html=1;strokeColor=none;fillColor=none;spacing=5;spacingTop=-20;whiteSpace=wrap;overflow=hidden;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="429.32" y="619" width="170.68" height="121" as="geometry" />
         </mxCell>
         <mxCell id="OXfMVgo-bKoFeGR6O4aJ-5" value="" style="image;sketch=0;aspect=fixed;html=1;points=[];align=center;fontSize=12;image=img/lib/mscae/Person.svg;" parent="1" vertex="1">
           <mxGeometry x="616.25" y="262" width="10.36" height="14" as="geometry" />
@@ -634,9 +631,6 @@
         <mxCell id="BBjP0p92KBEhS-hyFqq2-5" value="1.0.1-SNAPSHOT" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;rotation=-30;fontSize=7;" parent="1" vertex="1">
           <mxGeometry x="173.36" y="269" width="68" height="15" as="geometry" />
         </mxCell>
-        <mxCell id="BBjP0p92KBEhS-hyFqq2-6" value="" style="image;points=[];aspect=fixed;html=1;align=center;shadow=0;dashed=0;image=img/lib/allied_telesis/computer_and_terminals/Server_Desktop.svg;" parent="1" vertex="1">
-          <mxGeometry x="413.5400000000001" y="750" width="15.78" height="20" as="geometry" />
-        </mxCell>
         <mxCell id="BBjP0p92KBEhS-hyFqq2-8" value="" style="image;sketch=0;aspect=fixed;html=1;points=[];align=center;fontSize=12;image=img/lib/mscae/Person.svg;" parent="1" vertex="1">
           <mxGeometry x="353.55" y="412.5" width="6.66" height="9" as="geometry" />
         </mxCell>
@@ -653,7 +647,7 @@
           <mxGeometry x="223.78" y="619" width="169.22" height="247" as="geometry" />
         </mxCell>
         <mxCell id="4z12R46S5kYNJpjM7Y-n-2" value="" style="image;sketch=0;aspect=fixed;html=1;points=[];align=center;fontSize=12;image=img/lib/mscae/Person.svg;" parent="1" vertex="1">
-          <mxGeometry x="416.2500000000001" y="862" width="10.36" height="14" as="geometry" />
+          <mxGeometry x="419.0300000000001" y="812" width="10.36" height="14" as="geometry" />
         </mxCell>
         <mxCell id="4z12R46S5kYNJpjM7Y-n-4" value="" style="image;points=[];aspect=fixed;html=1;align=center;shadow=0;dashed=0;image=img/lib/allied_telesis/computer_and_terminals/Server_Desktop.svg;" parent="1" vertex="1">
           <mxGeometry x="208.42" y="669" width="15.78" height="20" as="geometry" />
@@ -662,58 +656,49 @@
           <mxGeometry x="213.92000000000004" y="914" width="10.36" height="14" as="geometry" />
         </mxCell>
         <mxCell id="4z12R46S5kYNJpjM7Y-n-6" value="&lt;h1&gt;Step 5&lt;/h1&gt;&lt;p&gt;- Raise PR from DEVELOP branch to MAIN branch&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;- CI triggers unit testing execution and compilation.&amp;nbsp;&lt;/span&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;" style="text;html=1;strokeColor=none;fillColor=none;spacing=5;spacingTop=-20;whiteSpace=wrap;overflow=hidden;rounded=0;" parent="1" vertex="1">
-          <mxGeometry x="429.31999999999994" y="810" width="170.68" height="130" as="geometry" />
+          <mxGeometry x="432.0999999999999" y="760" width="170.68" height="130" as="geometry" />
         </mxCell>
         <mxCell id="4z12R46S5kYNJpjM7Y-n-7" value="&lt;h1&gt;Step 7&lt;/h1&gt;&lt;h1&gt;&lt;p style=&quot;font-size: 12px; font-weight: 400;&quot;&gt;- Raise PR from MAIN branch to DEVELOP branch to sync version for next release.&lt;/p&gt;&lt;/h1&gt;" style="text;html=1;strokeColor=none;fillColor=none;spacing=5;spacingTop=-20;whiteSpace=wrap;overflow=hidden;rounded=0;" parent="1" vertex="1">
           <mxGeometry x="225.78" y="862" width="169.22" height="100" as="geometry" />
         </mxCell>
         <mxCell id="4z12R46S5kYNJpjM7Y-n-8" value="" style="image;sketch=0;aspect=fixed;html=1;points=[];align=center;fontSize=12;image=img/lib/mscae/Person.svg;" parent="1" vertex="1">
-          <mxGeometry x="417.32" y="334.5" width="10.36" height="14" as="geometry" />
-        </mxCell>
-        <mxCell id="4z12R46S5kYNJpjM7Y-n-9" value="" style="image;sketch=0;aspect=fixed;html=1;points=[];align=center;fontSize=12;image=img/lib/mscae/Person.svg;" parent="1" vertex="1">
-          <mxGeometry x="268.05000000000007" y="488.5" width="6.66" height="9" as="geometry" />
-        </mxCell>
-        <mxCell id="4z12R46S5kYNJpjM7Y-n-10" value="" style="image;points=[];aspect=fixed;html=1;align=center;shadow=0;dashed=0;image=img/lib/allied_telesis/computer_and_terminals/Server_Desktop.svg;" parent="1" vertex="1">
-          <mxGeometry x="257" y="487.5" width="8.68" height="11" as="geometry" />
-        </mxCell>
-        <mxCell id="4z12R46S5kYNJpjM7Y-n-11" value="" style="endArrow=none;html=1;rounded=0;" parent="1" edge="1">
-          <mxGeometry width="50" height="50" relative="1" as="geometry">
-            <mxPoint x="265.33000000000004" y="499.5" as="sourcePoint" />
-            <mxPoint x="268.33000000000004" y="487.5" as="targetPoint" />
-          </mxGeometry>
+          <mxGeometry x="351.7" y="334" width="10.36" height="14" as="geometry" />
         </mxCell>
         <mxCell id="0cvDcqls-X6eHiKjNZb2-1" value="" style="image;sketch=0;aspect=fixed;html=1;points=[];align=center;fontSize=12;image=img/lib/mscae/Person.svg;" parent="1" vertex="1">
-          <mxGeometry x="364.05" y="337" width="6.66" height="9" as="geometry" />
+          <mxGeometry x="427.27" y="337" width="6.66" height="9" as="geometry" />
         </mxCell>
         <mxCell id="0cvDcqls-X6eHiKjNZb2-2" value="" style="image;points=[];aspect=fixed;html=1;align=center;shadow=0;dashed=0;image=img/lib/allied_telesis/computer_and_terminals/Server_Desktop.svg;" parent="1" vertex="1">
-          <mxGeometry x="352.99999999999994" y="336" width="8.68" height="11" as="geometry" />
+          <mxGeometry x="416.2199999999999" y="336" width="8.68" height="11" as="geometry" />
         </mxCell>
         <mxCell id="0cvDcqls-X6eHiKjNZb2-3" value="" style="endArrow=none;html=1;rounded=0;" parent="1" edge="1">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
-            <mxPoint x="361.33" y="348" as="sourcePoint" />
-            <mxPoint x="364.33" y="336" as="targetPoint" />
+            <mxPoint x="424.54999999999995" y="348" as="sourcePoint" />
+            <mxPoint x="427.54999999999995" y="336" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         <mxCell id="PPeVbgFt_RhAregffIWH-1" value="1.0.1" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;rotation=-45;fontSize=7;" parent="1" vertex="1">
           <mxGeometry x="400" y="279" width="25" height="15" as="geometry" />
         </mxCell>
-        <mxCell id="88kiHInbqTPe76ADuOMw-1" value="" style="image;sketch=0;aspect=fixed;html=1;points=[];align=center;fontSize=12;image=img/lib/mscae/Person.svg;" vertex="1" parent="1">
+        <mxCell id="88kiHInbqTPe76ADuOMw-1" value="" style="image;sketch=0;aspect=fixed;html=1;points=[];align=center;fontSize=12;image=img/lib/mscae/Person.svg;" parent="1" vertex="1">
           <mxGeometry x="616.25" y="412.5" width="10.36" height="14" as="geometry" />
         </mxCell>
-        <mxCell id="Spv9hro86jePvd5OImK1-1" value="" style="image;points=[];aspect=fixed;html=1;align=center;shadow=0;dashed=0;image=img/lib/allied_telesis/computer_and_terminals/Server_Desktop.svg;" vertex="1" parent="1">
+        <mxCell id="Spv9hro86jePvd5OImK1-1" value="" style="image;points=[];aspect=fixed;html=1;align=center;shadow=0;dashed=0;image=img/lib/allied_telesis/computer_and_terminals/Server_Desktop.svg;" parent="1" vertex="1">
           <mxGeometry x="613.5100000000001" y="619" width="15.78" height="20" as="geometry" />
         </mxCell>
-        <mxCell id="oyk_eIMp6RMaiZnFQ-Iv-1" value="" style="image;sketch=0;aspect=fixed;html=1;points=[];align=center;fontSize=12;image=img/lib/mscae/Person.svg;" vertex="1" parent="1">
+        <mxCell id="oyk_eIMp6RMaiZnFQ-Iv-1" value="" style="image;sketch=0;aspect=fixed;html=1;points=[];align=center;fontSize=12;image=img/lib/mscae/Person.svg;" parent="1" vertex="1">
           <mxGeometry x="416.22000000000014" y="672" width="10.36" height="14" as="geometry" />
         </mxCell>
-        <mxCell id="5zizfrhb1TwS_gpO5_wk-1" value="" style="image;points=[];aspect=fixed;html=1;align=center;shadow=0;dashed=0;image=img/lib/allied_telesis/computer_and_terminals/Server_Desktop.svg;" vertex="1" parent="1">
-          <mxGeometry x="414.53999999999996" y="900" width="15.78" height="20" as="geometry" />
+        <mxCell id="5zizfrhb1TwS_gpO5_wk-1" value="" style="image;points=[];aspect=fixed;html=1;align=center;shadow=0;dashed=0;image=img/lib/allied_telesis/computer_and_terminals/Server_Desktop.svg;" parent="1" vertex="1">
+          <mxGeometry x="417.31999999999994" y="850" width="15.78" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="KNP3o3rH5vT1OqYaUKIJ-1" value="" style="image;sketch=0;aspect=fixed;html=1;points=[];align=center;fontSize=12;image=img/lib/mscae/Person.svg;" vertex="1" parent="1">
+          <mxGeometry x="234.82" y="505" width="10.36" height="14" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
   </diagram>
   <diagram name="Hotfix in existing API" id="ekRwx7Z4Jxs4Dp1Uz65I">
-    <mxGraphModel dx="1703" dy="972" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="972" dy="554" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="KCaYtTaPfws-i5a6BMBj-0" />
         <mxCell id="KCaYtTaPfws-i5a6BMBj-1" parent="KCaYtTaPfws-i5a6BMBj-0" />
@@ -766,10 +751,10 @@
           </mxGeometry>
         </mxCell>
         <mxCell id="KCaYtTaPfws-i5a6BMBj-21" value="Step 2" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="KCaYtTaPfws-i5a6BMBj-1" vertex="1">
-          <mxGeometry x="217.5" y="323.47" width="45" height="15" as="geometry" />
+          <mxGeometry x="222.68" y="322.97" width="45" height="15" as="geometry" />
         </mxCell>
         <mxCell id="KCaYtTaPfws-i5a6BMBj-25" value="Step 3" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="KCaYtTaPfws-i5a6BMBj-1" vertex="1">
-          <mxGeometry x="265" y="350" width="45" height="15" as="geometry" />
+          <mxGeometry x="265.56" y="345" width="45" height="15" as="geometry" />
         </mxCell>
         <mxCell id="KCaYtTaPfws-i5a6BMBj-27" value="" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;" parent="KCaYtTaPfws-i5a6BMBj-1" vertex="1">
           <mxGeometry x="315" y="370" width="10" height="10" as="geometry" />
@@ -859,7 +844,7 @@
           <mxGeometry x="275" y="290" width="10" height="10" as="geometry" />
         </mxCell>
         <mxCell id="u8KzUf-rlUg7iLQhAcp8-9" value="Step 5" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="KCaYtTaPfws-i5a6BMBj-1" vertex="1">
-          <mxGeometry x="369" y="400" width="45" height="15" as="geometry" />
+          <mxGeometry x="372" y="400" width="45" height="15" as="geometry" />
         </mxCell>
         <mxCell id="u8KzUf-rlUg7iLQhAcp8-10" value="1.0.3-SNAPSHOT" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=7;rotation=-30;" parent="KCaYtTaPfws-i5a6BMBj-1" vertex="1">
           <mxGeometry x="198" y="267" width="64" height="15" as="geometry" />
@@ -898,7 +883,7 @@
           <mxGeometry x="318" y="195" width="19" height="15" as="geometry" />
         </mxCell>
         <mxCell id="7uY_AHColU2bMzf3O50p-7" value="v1.0.3" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=7;rotation=-45;" parent="KCaYtTaPfws-i5a6BMBj-1" vertex="1">
-          <mxGeometry x="321" y="356" width="19" height="15" as="geometry" />
+          <mxGeometry x="299" y="380" width="19" height="15" as="geometry" />
         </mxCell>
         <mxCell id="7uY_AHColU2bMzf3O50p-8" value="v1.0.4-SNAPSHOT" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=7;rotation=-45;" parent="KCaYtTaPfws-i5a6BMBj-1" vertex="1">
           <mxGeometry x="352.53" y="337.97" width="70" height="15" as="geometry" />
@@ -909,32 +894,26 @@
         <mxCell id="Lrgpr5DEjoa6tGgg1VE5-0" value="" style="image;sketch=0;aspect=fixed;html=1;points=[];align=center;fontSize=12;image=img/lib/mscae/Person.svg;" parent="KCaYtTaPfws-i5a6BMBj-1" vertex="1">
           <mxGeometry x="220" y="250" width="10.36" height="14" as="geometry" />
         </mxCell>
-        <mxCell id="Lrgpr5DEjoa6tGgg1VE5-1" value="" style="image;sketch=0;aspect=fixed;html=1;points=[];align=center;fontSize=12;image=img/lib/mscae/Person.svg;" parent="KCaYtTaPfws-i5a6BMBj-1" vertex="1">
-          <mxGeometry x="264.64" y="323.47" width="10.36" height="14" as="geometry" />
-        </mxCell>
-        <mxCell id="Lrgpr5DEjoa6tGgg1VE5-2" value="" style="image;sketch=0;aspect=fixed;html=1;points=[];align=center;fontSize=12;image=img/lib/mscae/Person.svg;" parent="KCaYtTaPfws-i5a6BMBj-1" vertex="1">
-          <mxGeometry x="254.64" y="350" width="10.36" height="14" as="geometry" />
-        </mxCell>
         <mxCell id="Lrgpr5DEjoa6tGgg1VE5-3" value="" style="image;sketch=0;aspect=fixed;html=1;points=[];align=center;fontSize=12;image=img/lib/mscae/Person.svg;" parent="KCaYtTaPfws-i5a6BMBj-1" vertex="1">
-          <mxGeometry x="412.17" y="400" width="10.36" height="14" as="geometry" />
+          <mxGeometry x="415.17" y="400" width="10.36" height="14" as="geometry" />
         </mxCell>
         <mxCell id="a6g550W7RgDaWpkFAB2--0" value="" style="image;points=[];aspect=fixed;html=1;align=center;shadow=0;dashed=0;image=img/lib/allied_telesis/computer_and_terminals/Server_Desktop.svg;" parent="KCaYtTaPfws-i5a6BMBj-1" vertex="1">
           <mxGeometry x="362" y="330" width="15.78" height="20" as="geometry" />
         </mxCell>
         <mxCell id="W5-lTb19WmtSZLt6e7gY-0" value="&lt;h1&gt;Step 3&lt;/h1&gt;&lt;p&gt;&lt;/p&gt;- Raise PR from HOTFIX/BUG-1234 branch to MAIN branch&lt;p&gt;&lt;/p&gt;- CI triggers unit testing execution and compilation." style="text;html=1;strokeColor=none;fillColor=none;spacing=5;spacingTop=-20;whiteSpace=wrap;overflow=hidden;rounded=0;" parent="KCaYtTaPfws-i5a6BMBj-1" vertex="1">
-          <mxGeometry x="629.32" y="666" width="170.68" height="144" as="geometry" />
+          <mxGeometry x="629.32" y="615" width="170.68" height="144" as="geometry" />
         </mxCell>
         <mxCell id="W5-lTb19WmtSZLt6e7gY-1" value="" style="image;sketch=0;aspect=fixed;html=1;points=[];align=center;fontSize=12;image=img/lib/mscae/Person.svg;" parent="KCaYtTaPfws-i5a6BMBj-1" vertex="1">
-          <mxGeometry x="616.2500000000001" y="719" width="10.36" height="14" as="geometry" />
+          <mxGeometry x="616.2500000000001" y="668" width="10.36" height="14" as="geometry" />
         </mxCell>
         <mxCell id="W5-lTb19WmtSZLt6e7gY-2" value="" style="image;points=[];aspect=fixed;html=1;align=center;shadow=0;dashed=0;image=img/lib/allied_telesis/computer_and_terminals/Server_Desktop.svg;" parent="KCaYtTaPfws-i5a6BMBj-1" vertex="1">
-          <mxGeometry x="613.5400000000001" y="770" width="15.78" height="20" as="geometry" />
+          <mxGeometry x="613.5400000000001" y="719" width="15.78" height="20" as="geometry" />
         </mxCell>
         <mxCell id="e74ms_iUQcxN_djx9MFn-0" value="&lt;h1&gt;Step 1&lt;/h1&gt;&lt;p&gt;- Checkout MAIN branch at the CURRENTLY DEPLOYED version TAG.&lt;/p&gt;&lt;p&gt;- Create HOTFIX/BUG-1234 branch from MAIN branch on one specific TAG checked out.&lt;/p&gt;- Update the version in the POM.XML for the HOTFIX/BUG-1234 branch to the next minor version, with the suffix &quot;*-SNAPSHOT&quot; appended." style="text;html=1;strokeColor=none;fillColor=none;spacing=5;spacingTop=-20;whiteSpace=wrap;overflow=hidden;rounded=0;align=left;" parent="KCaYtTaPfws-i5a6BMBj-1" vertex="1">
           <mxGeometry x="630.29" y="210" width="169.71" height="250" as="geometry" />
         </mxCell>
-        <mxCell id="e74ms_iUQcxN_djx9MFn-2" value="&lt;h1&gt;Step 2&lt;/h1&gt;&lt;h1&gt;&lt;p style=&quot;font-size: 12px; font-weight: 400;&quot;&gt;- Commits containing the implementation and unit tests&amp;nbsp;&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;font-size: 12px; font-weight: 400;&quot;&gt;- Developer can deploy to DEV/UAT manually&lt;/p&gt;&lt;p style=&quot;font-size: 12px; font-weight: 400;&quot;&gt;- CI triggers unit testing execution and compilation and show output on PR.&lt;br&gt;&lt;/p&gt;&lt;/h1&gt;" style="text;html=1;strokeColor=none;fillColor=none;spacing=5;spacingTop=-20;whiteSpace=wrap;overflow=hidden;rounded=0;" parent="KCaYtTaPfws-i5a6BMBj-1" vertex="1">
-          <mxGeometry x="630" y="480" width="170" height="180" as="geometry" />
+        <mxCell id="e74ms_iUQcxN_djx9MFn-2" value="&lt;h1&gt;Step 2&lt;/h1&gt;&lt;h1&gt;&lt;p style=&quot;font-size: 12px; font-weight: 400;&quot;&gt;- Commits containing the implementation and unit tests&amp;nbsp;&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;font-size: 12px; font-weight: 400;&quot;&gt;- Developer can deploy to DEV/UAT manually&lt;/p&gt;&lt;/h1&gt;" style="text;html=1;strokeColor=none;fillColor=none;spacing=5;spacingTop=-20;whiteSpace=wrap;overflow=hidden;rounded=0;" parent="KCaYtTaPfws-i5a6BMBj-1" vertex="1">
+          <mxGeometry x="630" y="480" width="170" height="130" as="geometry" />
         </mxCell>
         <mxCell id="e74ms_iUQcxN_djx9MFn-3" value="" style="image;sketch=0;aspect=fixed;html=1;points=[];align=center;fontSize=12;image=img/lib/mscae/Person.svg;" parent="KCaYtTaPfws-i5a6BMBj-1" vertex="1">
           <mxGeometry x="616.25" y="262" width="10.36" height="14" as="geometry" />
@@ -951,9 +930,6 @@
         <mxCell id="e74ms_iUQcxN_djx9MFn-7" value="" style="image;sketch=0;aspect=fixed;html=1;points=[];align=center;fontSize=12;image=img/lib/mscae/Person.svg;" parent="KCaYtTaPfws-i5a6BMBj-1" vertex="1">
           <mxGeometry x="616.2500000000001" y="532" width="10.36" height="14" as="geometry" />
         </mxCell>
-        <mxCell id="e74ms_iUQcxN_djx9MFn-8" value="" style="image;points=[];aspect=fixed;html=1;align=center;shadow=0;dashed=0;image=img/lib/allied_telesis/computer_and_terminals/Server_Desktop.svg;" parent="KCaYtTaPfws-i5a6BMBj-1" vertex="1">
-          <mxGeometry x="613.5400000000001" y="612" width="15.78" height="20" as="geometry" />
-        </mxCell>
         <mxCell id="Qd3b8nFZz7_OavrQxIIZ-0" value="&lt;h1&gt;Step 4&lt;/h1&gt;&lt;p&gt;&lt;/p&gt;- After approval of PR, the commit on the MAIN branch will trigger the CI to run the Maven Release Plugin Prepare goal, to remove the *-SNAPSHOT from version, create a TAG in the MAIN branch named after the release version,&amp;nbsp;change the version on POM.xml to the next minor version, append the suffix&amp;nbsp;*-SNAPSHOT to it and commit." style="text;html=1;strokeColor=none;fillColor=none;spacing=5;spacingTop=-20;whiteSpace=wrap;overflow=hidden;rounded=0;" parent="KCaYtTaPfws-i5a6BMBj-1" vertex="1">
           <mxGeometry x="420.36" y="615" width="169.22" height="245" as="geometry" />
         </mxCell>
@@ -966,8 +942,23 @@
         <mxCell id="Qd3b8nFZz7_OavrQxIIZ-6" value="&lt;h1&gt;Step 5&lt;/h1&gt;&lt;p&gt;- Raise PR from MAIN branch to DEVELOP branch to sync version for next release.&lt;/p&gt;" style="text;html=1;strokeColor=none;fillColor=none;spacing=5;spacingTop=-20;whiteSpace=wrap;overflow=hidden;rounded=0;" parent="KCaYtTaPfws-i5a6BMBj-1" vertex="1">
           <mxGeometry x="227.86" y="615" width="169.22" height="100" as="geometry" />
         </mxCell>
-        <mxCell id="WYGj6mh-17uMyqnPVXsk-0" value="" style="image;sketch=0;aspect=fixed;html=1;points=[];align=center;fontSize=12;image=img/lib/mscae/Person.svg;" vertex="1" parent="KCaYtTaPfws-i5a6BMBj-1">
+        <mxCell id="WYGj6mh-17uMyqnPVXsk-0" value="" style="image;sketch=0;aspect=fixed;html=1;points=[];align=center;fontSize=12;image=img/lib/mscae/Person.svg;" parent="KCaYtTaPfws-i5a6BMBj-1" vertex="1">
           <mxGeometry x="616.0000000000001" y="573" width="10.36" height="14" as="geometry" />
+        </mxCell>
+        <mxCell id="ENipnmeBnaSRcsTpA70A-3" value="" style="image;sketch=0;aspect=fixed;html=1;points=[];align=center;fontSize=12;image=img/lib/mscae/Person.svg;" vertex="1" parent="KCaYtTaPfws-i5a6BMBj-1">
+          <mxGeometry x="263.05" y="349" width="6.66" height="9" as="geometry" />
+        </mxCell>
+        <mxCell id="ENipnmeBnaSRcsTpA70A-4" value="" style="image;points=[];aspect=fixed;html=1;align=center;shadow=0;dashed=0;image=img/lib/allied_telesis/computer_and_terminals/Server_Desktop.svg;" vertex="1" parent="KCaYtTaPfws-i5a6BMBj-1">
+          <mxGeometry x="251.99999999999997" y="348" width="8.68" height="11" as="geometry" />
+        </mxCell>
+        <mxCell id="ENipnmeBnaSRcsTpA70A-5" value="" style="endArrow=none;html=1;rounded=0;" edge="1" parent="KCaYtTaPfws-i5a6BMBj-1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="260.33" y="360" as="sourcePoint" />
+            <mxPoint x="263.33" y="348" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="XVX3bHcsRivdDDFI9MPU-0" value="" style="image;sketch=0;aspect=fixed;html=1;points=[];align=center;fontSize=12;image=img/lib/mscae/Person.svg;" vertex="1" parent="KCaYtTaPfws-i5a6BMBj-1">
+          <mxGeometry x="212.32000000000002" y="322.97" width="10.36" height="14" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
