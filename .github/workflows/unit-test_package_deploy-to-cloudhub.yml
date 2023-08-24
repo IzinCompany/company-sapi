@@ -6,7 +6,7 @@
 # separate terms of service, privacy policy, and support
 # documentation.
 
-name: Unit tests, package, deploy to Sandbox Cloudhub 
+name: Unit tests, package, deploy to Cloudhub 
 
 on:
   workflow_dispatch:
