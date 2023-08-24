@@ -17,7 +17,7 @@
 		<munit.version>2.3.14</munit.version>
 	</properties>
 	<scm>
-		<developerConnection>scm:git:https://github.com/IzinCompany/company-sapi.git</developerConnection>
+		<developerConnection>scm:git:https://github.com/IzinCompany/verbose-waffle.git</developerConnection>
 		<tag>HEAD</tag>
 	</scm>
 	<build>
