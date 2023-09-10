@@ -13,14 +13,16 @@ on:
     inputs:
       environment:
         description: 'Target environment to deploy'
-        type: string
+        type: environment
         required: true
 
       runtimeVersion:
         description: 'Version of the runtime that will run the deployed asset'
         required: true
         default: '4.4.0'
-        type: string
+        type: choice
+        options:
+        - 4.4.0
       
       deployExchange:
         description: "Select to deploy to exchange before cloudhub"
