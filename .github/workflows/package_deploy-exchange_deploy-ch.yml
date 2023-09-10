@@ -38,17 +38,20 @@ jobs:
 
   package:
       name: Package Mule Project
+      needs: runMUnits
       uses: IzinCompany/cicd-workflows/.github/workflows/package.yml@main
       secrets: inherit
 
   deployExchange:
     name: Deploy to Exchange
+    needs: package
     if: inputs.deployExchange
     uses: IzinCompany/cicd-workflows/.github/workflows/deploy-exchange.yml@main
     secrets: inherit
 
   deployCH:
     name: Deploy to Cloud Hub
+    needs: deployExchange
     uses: IzinCompany/cicd-workflows/.github/workflows/deploy.yml@main
     with:
       environment: ${{ inputs.environment }}
