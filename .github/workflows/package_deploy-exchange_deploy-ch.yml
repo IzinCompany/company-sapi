@@ -45,8 +45,8 @@ jobs:
   deployCH:
     name: Deploy to Cloud Hub
     needs: deployExchange
-    uses: IzinCompany/cicd-workflows/.github/workflows/deploy.yml@main
     environment: ${{ inputs.environment }}
+    uses: IzinCompany/cicd-workflows/.github/workflows/deploy.yml@main
     with:
       environment: ${{ inputs.environment }}
       runtimeVersion: ${{ inputs.runtimeVersion }}
