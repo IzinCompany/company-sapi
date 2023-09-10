@@ -9,11 +9,6 @@
 name: Validate commit
 
 on:
-  pull_request:
-    branches:
-      - 'main'
-    types:
-      - 'closed'
   workflow_dispatch:
     
 
@@ -21,6 +16,5 @@ jobs:
   
   run_munits_compile:
     name: Run MUnits and compilation for the commit.
-    if: github.event.pull_request.merged
     uses: IzinCompany/cicd-workflows/.github/workflows/unit-test_compile.yml@main
     secrets: inherit
