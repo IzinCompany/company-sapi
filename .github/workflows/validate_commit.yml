@@ -11,10 +11,13 @@ name: Validate commit
 on:
   workflow_dispatch:
     
-
 jobs:
-  
-  run_munits_compile:
-    name: Run MUnits and compilation for the commit.
-    uses: IzinCompany/cicd-workflows/.github/workflows/unit-test_compile.yml@main
+  runMUnits:
+    name: Run MUnits
+    uses: IzinCompany/cicd-workflows/.github/workflows/run-munits.yml@main
     secrets: inherit
+
+  compile:
+      name: Compile Mule Project
+      uses: IzinCompany/cicd-workflows/.github/workflows/compile.yml@main
+      secrets: inherit
