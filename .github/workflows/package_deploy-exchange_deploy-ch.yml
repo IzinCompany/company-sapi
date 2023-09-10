@@ -23,12 +23,6 @@ on:
         type: choice
         options:
         - 4.4.0
-      
-      deployExchange:
-        description: "Select to deploy to exchange before cloudhub"
-        required: true
-        default: false
-        type: boolean
     
 jobs:
   runMUnits:
@@ -45,13 +39,12 @@ jobs:
   deployExchange:
     name: Deploy to Exchange
     needs: package
-    if: inputs.deployExchange
     uses: IzinCompany/cicd-workflows/.github/workflows/deploy-exchange.yml@main
     secrets: inherit
 
   deployCH:
     name: Deploy to Cloud Hub
-    needs: package
+    needs: deployExchange
     uses: IzinCompany/cicd-workflows/.github/workflows/deploy.yml@main
     with:
       environment: ${{ inputs.environment }}
