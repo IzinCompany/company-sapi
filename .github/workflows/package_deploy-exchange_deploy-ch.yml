@@ -45,8 +45,6 @@ jobs:
     name: Deploy to Exchange
     if: inputs.deployExchange
     uses: IzinCompany/cicd-workflows/.github/workflows/deploy-exchange.yml@main
-    with:
-      runtimeVersion: ${{ inputs.runtimeVersion }}
     secrets: inherit
 
   deployCH:
