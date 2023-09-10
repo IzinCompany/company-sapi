@@ -13,7 +13,7 @@ on:
     branches:
       - 'develop'
       - 'main'
-  workflow_dispatch:re
+  workflow_dispatch:
 
 jobs:
   unitTest:

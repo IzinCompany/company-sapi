@@ -1,0 +1,26 @@
+# This workflow will build a Java project with Maven, and cache/restore any dependencies to improve the workflow execution time
+# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-java-with-maven
+
+# This workflow uses actions that are not certified by GitHub.
+# They are provided by a third-party and are governed by
+# separate terms of service, privacy policy, and support
+# documentation.
+
+name: Validate commit
+
+on:
+  pull_request:
+    branches:
+      - 'main'
+    types:
+      - 'closed'
+  workflow_dispatch:
+    
+
+jobs:
+  
+  run_munits_compile:
+    name: Run MUnits and compilation for the commit.
+    if: github.event.pull_request.merged
+    uses: cicd-workflows/workflows/unit-test_compile.yml@main
+    secrets: inherit
