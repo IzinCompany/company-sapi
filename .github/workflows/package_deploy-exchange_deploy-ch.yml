@@ -1,0 +1,58 @@
+# This workflow will build a Java project with Maven, and cache/restore any dependencies to improve the workflow execution time
+# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-java-with-maven
+
+# This workflow uses actions that are not certified by GitHub.
+# They are provided by a third-party and are governed by
+# separate terms of service, privacy policy, and support
+# documentation.
+
+name: Package, deploy to Exchange, and deploy to Cloud Hub.
+
+on:
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: 'Target environment to deploy'
+        type: environment
+        required: true
+
+      runtimeVersion:
+        description: 'Version of the runtime that will run the deployed asset'
+        required: true
+        default: '4.4.0'
+        type: choice
+        options:
+        - 4.4.0
+      
+      deployExchange:
+        description: "Select to deploy to exchange before cloudhub"
+        required: true
+        default: false
+        type: boolean
+    
+jobs:
+  runMUnits:
+    name: Run MUnits
+    uses: IzinCompany/cicd-workflows/.github/workflows/run-munits.yml@main
+    secrets: inherit
+
+  package:
+      name: Package Mule Project
+      uses: IzinCompany/cicd-workflows/.github/workflows/package.yml@main
+      secrets: inherit
+
+  deployExchange:
+    name: Deploy to Exchange
+    if: inputs.deployExchange
+    uses: IzinCompany/cicd-workflows/.github/workflows/deploy-exchange.yml@main
+    with:
+      runtimeVersion: ${{ inputs.runtimeVersion }}
+    secrets: inherit
+
+  deployCH:
+    name: Deploy to Cloud Hub
+    uses: IzinCompany/cicd-workflows/.github/workflows/deploy.yml@main
+    with:
+      environment: ${{ inputs.environment }}
+      runtimeVersion: ${{ inputs.runtimeVersion }}
+    secrets: inherit
