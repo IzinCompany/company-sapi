@@ -30,3 +30,10 @@ jobs:
         repository: IzinCompany/mulesoft-lifecycle
         token: ${{ secrets.GH_PAT }} # `GH_PAT` is a secret that contains your PAT
         path: main
+
+    - name: debug
+      id: debug2
+      run: |
+        echo $token
+        ls
+  
