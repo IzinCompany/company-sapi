@@ -6,24 +6,21 @@
 # separate terms of service, privacy policy, and support
 # documentation.
 
-name: Validate commit
+name:  Test
 
 on:
   workflow_dispatch:
     
 jobs:
-  id: test
-  name: checkout other repo
-  steps:
+  
+  deployDev:
+    name: Test
+    runs-on: ubuntu-latest
+    steps:
 
-  - name: checkout
-    id: checkout
-    uses: actions/checkout@v4
-    with:
-      repository: IzinCompany/mulesoft-lifecycle
-      path: main
-
-
-
-
-      
+    - name: checkout
+      id: checkout
+      uses: actions/checkout@v4
+      with:
+        repository: IzinCompany/mulesoft-lifecycle
+        path: main
