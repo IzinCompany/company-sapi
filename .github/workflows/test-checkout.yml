@@ -18,9 +18,15 @@ jobs:
     runs-on: ubuntu-latest
     steps:
 
+    - name: debug
+      id: debug
+      run: |
+        echo $token
+
     - name: checkout
       id: checkout
       uses: actions/checkout@v4
       with:
         repository: IzinCompany/mulesoft-lifecycle
+        token: ${{ secrets.GH_PAT }} # `GH_PAT` is a secret that contains your PAT
         path: main
